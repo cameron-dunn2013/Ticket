@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 let model = Model()
 
 class Model{
     
-    let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("day.txt")
+    let filePath = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]).appendingPathComponent("day.plist")
+   
     var currentDay : Day = Day()
     var clockedIn : Bool = false
     
@@ -25,7 +27,8 @@ class Model{
         formatter.dateFormat = "hh:mm a"
         let time = formatter.string(for: currentDate)
         let tip = Tip(tipAmount: amount, tipDate: shortenedDate!, tipTime: time!)
-        currentDay.tips.append(tip)
+        currentDay.tips.appendAtBeginning(newItem: tip)
+        saveDay()
         tableView.reloadData()
     }
     
@@ -43,32 +46,24 @@ class Model{
     }
     
     func saveDay(){
-        deleteSave()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "DayEntity", in: context)
+        let newDay = NSManagedObject(entity: entity!, insertInto: context)
+        newDay.setValuesForKeys(["clockInTime": currentDay.clockInTime,
+                                 "tips":currentDay.tips,
+                                 "totalTips":currentDay.totalTips ?? 0.00
+            ])
         do{
-            let jsonDay = try JSONEncoder().encode(currentDay)
-            let jsonString = jsonDay.description
-            try jsonString.write(to: filePath, atomically: false, encoding: .utf8)
-            
+            try context.save()
         }catch{
             print(error)
         }
-    }
-    
-    func deleteSave(){
-        do{
-            try FileManager().removeItem(at: filePath)
-        }catch{
-            print(error)
-        }
+        
     }
     
     func clockOut() -> (controller: UIAlertController?, showAnimation: Bool){
         if clockedIn {
-            do{
-                try FileManager().removeItem(at: filePath)
-            }catch{
-                print(error)
-            }
             currentDay.clockOutTime = Date()
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute]
@@ -86,15 +81,16 @@ class Model{
     
     func loadCurrentDay(){
         var day : Day?
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DayEntity")
         do{
-            guard let data = try Data(base64Encoded: String(contentsOf: filePath)) else {return}
-            day = try JSONDecoder().decode(Day.self, from: data)
+            day = try context.fetch(request).first as? Day
         }catch{
             print(error)
+            return
         }
-        guard let tempDay = day else {return}
-        currentDay = tempDay
-        deleteSave()
+        guard let newDay = day else {return}
+        currentDay = newDay
     }
-    
 }

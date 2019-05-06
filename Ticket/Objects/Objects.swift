@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Tip : Codable{
+public class Tip : NSObject, Codable{
     var tipID = UUID()
     var tipAmount : Double
     var longDate = Date()
@@ -22,7 +22,7 @@ struct Tip : Codable{
     }
 }
 
-struct Day : Codable{
+struct Day: Codable{
     var tips : [Tip] = []
     var clockInTime : Date = Date()
     var clockOutTime : Date?

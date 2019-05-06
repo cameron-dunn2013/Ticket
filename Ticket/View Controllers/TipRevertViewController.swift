@@ -27,7 +27,10 @@ class TipRevertViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tipsCell") as! TipsTableViewCell
-        cell.amountLabel.text = "$\(model.currentDay.tips[indexPath.row].tipAmount)"
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 2
+        let numberString = formatter.string(from: NSNumber(value: model.currentDay.tips[indexPath.row].tipAmount))
+        cell.amountLabel.text = "$\(numberString!)"
         cell.dateLabel.text = "\(model.currentDay.tips[indexPath.row].tipTime)"
         return cell
     }

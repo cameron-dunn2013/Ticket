@@ -129,7 +129,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 animationImage.isHidden = false
                 animationImage.setGifImage(gif)
                 animationImage.startAnimatingGif()
-                _ = Timer.scheduledTimer(withTimeInterval: 1.7, repeats: false, block: {_ in
+                _ = Timer.scheduledTimer(withTimeInterval: 1.8, repeats: false, block: {_ in
                     self.stopAnimation()
                 })
             }catch{
@@ -151,7 +151,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 animationImage.isHidden = false
                 animationImage.setGifImage(gif)
                 animationImage.startAnimatingGif()
-                _ = Timer.scheduledTimer(withTimeInterval: 1.7, repeats: false, block: {_ in
+                _ = Timer.scheduledTimer(withTimeInterval: 1.8, repeats: false, block: {_ in
                     self.stopAnimation()
                 })
             }catch{
