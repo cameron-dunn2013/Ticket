@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B99E5584EA69D891309D2FB /* Pods_Ticket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681B8AC9100BF640DE76A9BC /* Pods_Ticket.framework */; };
 		E7036257227E6B7C00399C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7036256227E6B7C00399C8A /* AppDelegate.swift */; };
 		E7036259227E6B7C00399C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7036258227E6B7C00399C8A /* ViewController.swift */; };
 		E703625C227E6B7C00399C8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703625A227E6B7C00399C8A /* Main.storyboard */; };
@@ -18,9 +19,14 @@
 		E71704A7227F742D006E19C7 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A6227F742D006E19C7 /* Objects.swift */; };
 		E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A8227FA355006E19C7 /* HomeViewController.swift */; };
 		E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */; };
+		E71704B2227FE924006E19C7 /* gifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B1227FE924006E19C7 /* gifExtension.swift */; };
+		E71704B4227FE980006E19C7 /* Checkmark.gif in Resources */ = {isa = PBXBuildFile; fileRef = E71704B3227FE980006E19C7 /* Checkmark.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		681B8AC9100BF640DE76A9BC /* Pods_Ticket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ticket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B659AB8824EA5CA28D9E1BAC /* Pods-Ticket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ticket.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ticket/Pods-Ticket.release.xcconfig"; sourceTree = "<group>"; };
+		C9332827B2C971E3CA3675E8 /* Pods-Ticket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ticket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ticket/Pods-Ticket.debug.xcconfig"; sourceTree = "<group>"; };
 		E7036253227E6B7C00399C8A /* Ticket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ticket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7036256227E6B7C00399C8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7036258227E6B7C00399C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +40,8 @@
 		E71704A6227F742D006E19C7 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		E71704A8227FA355006E19C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTipsTableViewCell.swift; path = "Ticket/Custom Cell/HomeTipsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		E71704B1227FE924006E19C7 /* gifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifExtension.swift; sourceTree = "<group>"; };
+		E71704B3227FE980006E19C7 /* Checkmark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Checkmark.gif; path = Assets/Checkmark.gif; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B99E5584EA69D891309D2FB /* Pods_Ticket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1447D694E7F21ECF8C5209A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9332827B2C971E3CA3675E8 /* Pods-Ticket.debug.xcconfig */,
+				B659AB8824EA5CA28D9E1BAC /* Pods-Ticket.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1E6B28273B7111A50F77B191 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				681B8AC9100BF640DE76A9BC /* Pods_Ticket.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E703624A227E6B7C00399C8A = {
 			isa = PBXGroup;
 			children = (
 				E7036255227E6B7C00399C8A /* Ticket */,
 				E7036254227E6B7C00399C8A /* Products */,
+				1447D694E7F21ECF8C5209A6 /* Pods */,
+				1E6B28273B7111A50F77B191 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				E7036256227E6B7C00399C8A /* AppDelegate.swift */,
+				E71704B3227FE980006E19C7 /* Checkmark.gif */,
 				E71704AA227FA360006E19C7 /* View Controllers */,
 				E71704AB227FA37D006E19C7 /* Model */,
 				E71704AC227FA38A006E19C7 /* Objects */,
@@ -84,6 +113,7 @@
 				E7036258227E6B7C00399C8A /* ViewController.swift */,
 				E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */,
 				E71704A8227FA355006E19C7 /* HomeViewController.swift */,
+				E71704B1227FE924006E19C7 /* gifExtension.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -129,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7036265227E6B7D00399C8A /* Build configuration list for PBXNativeTarget "Ticket" */;
 			buildPhases = (
+				DE4CDBFECE22A563FE0274A8 /* [CP] Check Pods Manifest.lock */,
 				E703624F227E6B7C00399C8A /* Sources */,
 				E7036250227E6B7C00399C8A /* Frameworks */,
 				E7036251227E6B7C00399C8A /* Resources */,
+				EAC84D0E1B2B6C428E17D32A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,11 +214,59 @@
 			files = (
 				E7036261227E6B7D00399C8A /* LaunchScreen.storyboard in Resources */,
 				E703625E227E6B7D00399C8A /* Assets.xcassets in Resources */,
+				E71704B4227FE980006E19C7 /* Checkmark.gif in Resources */,
 				E703625C227E6B7C00399C8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DE4CDBFECE22A563FE0274A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ticket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAC84D0E1B2B6C428E17D32A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ticket/Pods-Ticket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ticket/Pods-Ticket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E703624F227E6B7C00399C8A /* Sources */ = {
@@ -200,6 +280,7 @@
 				E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */,
 				E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */,
 				E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */,
+				E71704B2227FE924006E19C7 /* gifExtension.swift in Sources */,
 				E7036257227E6B7C00399C8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +425,7 @@
 		};
 		E7036266227E6B7D00399C8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9332827B2C971E3CA3675E8 /* Pods-Ticket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +444,7 @@
 		};
 		E7036267227E6B7D00399C8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B659AB8824EA5CA28D9E1BAC /* Pods-Ticket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

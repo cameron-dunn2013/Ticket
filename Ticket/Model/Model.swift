@@ -38,22 +38,29 @@ class Model{
         clockedIn = true
         let day = Day()
         currentDay = day
-        UserDefaults.standard.set(day, forKey: "CurrentDay")
+        do{
+            let jsonDay = try JSONEncoder().encode(currentDay)
+            let jsonString = jsonDay.description
+            let data = jsonString.data(using: .ascii)
+            if let file = FileHandle(forWritingAtPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!){
+                file.write(data!)
+                
+            }
+            
+        }catch{
+            print(error)
+        }
         return (nil, true)
     }
     
-    func loadCurrentDay(){
-        guard let day = UserDefaults.standard.object(forKey: "CurrentDay") as? Day else {return}
-        clockedIn = true
-        currentDay = day
-    }
-
     func clockOut() -> (controller: UIAlertController?, showAnimation: Bool){
         if clockedIn {
             currentDay?.clockOutTime = Date()
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute]
-            currentDay?.timeWorked = formatter.string(from: currentDay!.clockInTime, to: currentDay!.clockOutTime!)
+            let currentDay1 = currentDay
+            let currentDay2 = currentDay
+            self.currentDay?.timeWorked = formatter.string(from: currentDay1!.clockInTime, to: currentDay2!.clockOutTime!)
             clockedIn = false
             return (nil, true)
         }else{
@@ -62,4 +69,15 @@ class Model{
             return (controller, false)
         }
     }
+    
+    func loadCurrentDay(){
+        guard let day = UserDefaults.standard.object(forKey: "CurrentDay") as? Day else {return}
+        clockedIn = true
+        currentDay = day
+    }
+    
+    func addTip(tipAmount: Double, tableView: UITableView){
+        
+    }
+    
 }

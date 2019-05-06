@@ -157,7 +157,7 @@
                                                 <rect key="frame" x="144" y="298" width="87.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="N64-Jh-k6T">
                                                 <rect key="frame" x="127.5" y="348" width="120" height="50"/>
@@ -281,8 +281,17 @@
                                                     <constraint firstAttribute="width" constant="320" id="YOA-sU-4mv"/>
                                                 </constraints>
                                             </view>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xyo-1T-pgL">
+                                                <rect key="frame" x="37.5" y="71" width="300" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="W5d-q3-YaL"/>
+                                                    <constraint firstAttribute="width" constant="300" id="qD6-xW-4xp"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="Xyo-1T-pgL" firstAttribute="top" secondItem="io0-TO-5ml" secondAttribute="top" constant="71" id="196-bk-05X"/>
+                                            <constraint firstItem="Xyo-1T-pgL" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="4zF-qc-BEa"/>
                                             <constraint firstItem="7Ss-qq-aI8" firstAttribute="leading" secondItem="io0-TO-5ml" secondAttribute="leading" id="8Uh-BH-P2z"/>
                                             <constraint firstItem="eym-4j-TmW" firstAttribute="top" secondItem="ZV2-2I-0mc" secondAttribute="bottom" constant="20" id="9Ux-i0-DpO"/>
                                             <constraint firstItem="7Ss-qq-aI8" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="E8C-Gx-mH2"/>
@@ -330,6 +339,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="Day" selectedImage="Day" id="f0p-6Y-B1x"/>
                     <size key="freeformSize" width="375" height="800"/>
+                    <connections>
+                        <outlet property="animationImage" destination="Xyo-1T-pgL" id="mTG-yZ-jq1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbz-uc-hbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

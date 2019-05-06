@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SwiftyGif
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var animationImage: UIImageView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.tips.count
     }
@@ -32,10 +36,44 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func clockInButton(_ sender: Any) {
         let clockInVar = model.clockIn()
         if clockInVar.animation{
-            
+            do{
+                let gif = try UIImage(gifName: "Checkmark.gif")
+                animationImage.loopCount = 1
+                animationImage.isHidden = false
+                animationImage.setGifImage(gif)
+                animationImage.startAnimatingGif()
+                _ = Timer.scheduledTimer(withTimeInterval: 1.7, repeats: false, block: {_ in
+                    self.stopAnimation()
+                })
+            }catch{
+                print(error)
+            }
+        }else{
+            present(clockInVar.controller!, animated: true)
         }
     }
     @IBAction func clockOutButton(_ sender: Any) {
+        let clockOutVar = model.clockOut()
+        if clockOutVar.showAnimation{
+            do{
+                let gif = try UIImage(gifName: "Checkmark.gif")
+                animationImage.loopCount = 1
+                animationImage.isHidden = false
+                animationImage.setGifImage(gif)
+                animationImage.startAnimatingGif()
+                _ = Timer.scheduledTimer(withTimeInterval: 1.7, repeats: false, block: {_ in
+                    self.stopAnimation()
+                })
+            }catch{
+                print(error)
+            }
+        }else{
+            present(clockOutVar.controller!, animated: true)
+        }
+
+    }
+    func stopAnimation(){
+        animationImage.stopAnimatingGif()
     }
     @IBAction func undoButton(_ sender: Any) {
     }
