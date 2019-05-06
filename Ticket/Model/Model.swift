@@ -13,20 +13,20 @@ let model = Model()
 
 class Model{
     
-    
-    var tips : [Tip] = []
-    var currentDay : Day?
+    let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("day.txt")
+    var currentDay : Day = Day()
     var clockedIn : Bool = false
     
-    func createTip(amount : Double){
+    func createTip(amount : Double, tableView : UITableView){
         let currentDate = Date()
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.month, .day, .year]
-        let shortenedDate = formatter.string(for: currentDate)!
-        formatter.allowedUnits = [.hour, .minute]
-        let time = formatter.string(for: currentDate)!
-        let tip = Tip(tipAmount: amount, tipDate: shortenedDate, tipTime: time)
-        tips.append(tip)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        let shortenedDate = formatter.string(for: currentDate)
+        formatter.dateFormat = "hh:mm a"
+        let time = formatter.string(for: currentDate)
+        let tip = Tip(tipAmount: amount, tipDate: shortenedDate!, tipTime: time!)
+        currentDay.tips.append(tip)
+        tableView.reloadData()
     }
     
     func clockIn() -> (controller: UIAlertController?, animation: Bool){
@@ -38,29 +38,43 @@ class Model{
         clockedIn = true
         let day = Day()
         currentDay = day
+        saveDay()
+        return (nil, true)
+    }
+    
+    func saveDay(){
+        deleteSave()
         do{
             let jsonDay = try JSONEncoder().encode(currentDay)
             let jsonString = jsonDay.description
-            let data = jsonString.data(using: .ascii)
-            if let file = FileHandle(forWritingAtPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!){
-                file.write(data!)
-                
-            }
+            try jsonString.write(to: filePath, atomically: false, encoding: .utf8)
             
         }catch{
             print(error)
         }
-        return (nil, true)
+    }
+    
+    func deleteSave(){
+        do{
+            try FileManager().removeItem(at: filePath)
+        }catch{
+            print(error)
+        }
     }
     
     func clockOut() -> (controller: UIAlertController?, showAnimation: Bool){
         if clockedIn {
-            currentDay?.clockOutTime = Date()
+            do{
+                try FileManager().removeItem(at: filePath)
+            }catch{
+                print(error)
+            }
+            currentDay.clockOutTime = Date()
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute]
             let currentDay1 = currentDay
             let currentDay2 = currentDay
-            self.currentDay?.timeWorked = formatter.string(from: currentDay1!.clockInTime, to: currentDay2!.clockOutTime!)
+            self.currentDay.timeWorked = formatter.string(from: currentDay1.clockInTime, to: currentDay2.clockOutTime!)
             clockedIn = false
             return (nil, true)
         }else{
@@ -71,13 +85,16 @@ class Model{
     }
     
     func loadCurrentDay(){
-        guard let day = UserDefaults.standard.object(forKey: "CurrentDay") as? Day else {return}
-        clockedIn = true
-        currentDay = day
-    }
-    
-    func addTip(tipAmount: Double, tableView: UITableView){
-        
+        var day : Day?
+        do{
+            guard let data = try Data(base64Encoded: String(contentsOf: filePath)) else {return}
+            day = try JSONDecoder().decode(Day.self, from: data)
+        }catch{
+            print(error)
+        }
+        guard let tempDay = day else {return}
+        currentDay = tempDay
+        deleteSave()
     }
     
 }

@@ -16,26 +16,20 @@ class TipRevertViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.isNavigationBarHidden = false
         
         // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return model.currentDay.tips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tipsCell") as! TipsTableViewCell
-        cell.amountLabel.text = "$"
-        cell.dateLabel.text = "Date"
+        cell.amountLabel.text = "$\(model.currentDay.tips[indexPath.row].tipAmount)"
+        cell.dateLabel.text = "\(model.currentDay.tips[indexPath.row].tipTime)"
         return cell
-    }
-    
-
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
 
