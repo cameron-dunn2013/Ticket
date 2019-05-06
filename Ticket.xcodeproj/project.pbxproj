@@ -15,7 +15,9 @@
 		E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */; };
 		E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */; };
 		E71704A5227F7422006E19C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A4227F7422006E19C7 /* Model.swift */; };
-		E71704A7227F742D006E19C7 /* TipClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A6227F742D006E19C7 /* TipClass.swift */; };
+		E71704A7227F742D006E19C7 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A6227F742D006E19C7 /* Objects.swift */; };
+		E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A8227FA355006E19C7 /* HomeViewController.swift */; };
+		E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +31,9 @@
 		E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRevertViewController.swift; sourceTree = "<group>"; };
 		E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewCell.swift; sourceTree = "<group>"; };
 		E71704A4227F7422006E19C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		E71704A6227F742D006E19C7 /* TipClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipClass.swift; sourceTree = "<group>"; };
+		E71704A6227F742D006E19C7 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		E71704A8227FA355006E19C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTipsTableViewCell.swift; path = "Ticket/Custom Cell/HomeTipsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +67,59 @@
 			isa = PBXGroup;
 			children = (
 				E7036256227E6B7C00399C8A /* AppDelegate.swift */,
-				E7036258227E6B7C00399C8A /* ViewController.swift */,
-				E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */,
-				E71704A4227F7422006E19C7 /* Model.swift */,
-				E71704A6227F742D006E19C7 /* TipClass.swift */,
-				E703625A227E6B7C00399C8A /* Main.storyboard */,
-				E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */,
+				E71704AA227FA360006E19C7 /* View Controllers */,
+				E71704AB227FA37D006E19C7 /* Model */,
+				E71704AC227FA38A006E19C7 /* Objects */,
+				E71704AD227FA396006E19C7 /* Custom Cell */,
+				E71704AE227FA3AE006E19C7 /* Storyboards */,
 				E703625D227E6B7D00399C8A /* Assets.xcassets */,
-				E703625F227E6B7D00399C8A /* LaunchScreen.storyboard */,
 				E7036262227E6B7D00399C8A /* Info.plist */,
 			);
 			path = Ticket;
+			sourceTree = "<group>";
+		};
+		E71704AA227FA360006E19C7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7036258227E6B7C00399C8A /* ViewController.swift */,
+				E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */,
+				E71704A8227FA355006E19C7 /* HomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E71704AB227FA37D006E19C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E71704A4227F7422006E19C7 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E71704AC227FA38A006E19C7 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E71704A6227F742D006E19C7 /* Objects.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		E71704AD227FA396006E19C7 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */,
+				E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		E71704AE227FA3AE006E19C7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E703625A227E6B7C00399C8A /* Main.storyboard */,
+				E703625F227E6B7D00399C8A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +195,11 @@
 			files = (
 				E71704A5227F7422006E19C7 /* Model.swift in Sources */,
 				E7036259227E6B7C00399C8A /* ViewController.swift in Sources */,
-				E71704A7227F742D006E19C7 /* TipClass.swift in Sources */,
+				E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */,
+				E71704A7227F742D006E19C7 /* Objects.swift in Sources */,
 				E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */,
 				E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */,
+				E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */,
 				E7036257227E6B7C00399C8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
