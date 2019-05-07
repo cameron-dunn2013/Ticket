@@ -74,7 +74,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tipTextField.text = ""
         lastTipAmountLabel.text = "$\(tipEntered)"
         var totalTipAmount : Double = 0.00
-        for index in model.currentDay.tips{
+        for index in model.currentDay.tips!{
             totalTipAmount += index.tipAmount
         }
         let formatter = NumberFormatter()
@@ -85,7 +85,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.currentDay.tips.count
+        guard let numberOfRows = model.currentDay.tips?.count else {return 0}
+        return numberOfRows
     }
     
     
@@ -100,9 +101,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TipsCell") as! HomeTipsTableViewCell
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
-        let numberString = formatter.string(from: NSNumber(value: model.currentDay.tips[indexPath.row].tipAmount))
+        let numberString = formatter.string(from: NSNumber(value: model.currentDay.tips?[indexPath.row].tipAmount ?? 0.00))
         cell.amountLabel.text = "$\(numberString!)"
-        cell.dateLabel.text = model.currentDay.tips[indexPath.row].tipTime
+        cell.dateLabel.text = model.currentDay.tips?[indexPath.row].tipTime ?? ""
         return cell
     }
     
@@ -125,13 +126,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if clockInVar.animation{
             do{
                 let gif = try UIImage(gifName: "Checkmark.gif")
-                animationImage.loopCount = 1
                 animationImage.isHidden = false
                 animationImage.setGifImage(gif)
+                animationImage.loopCount = 1
                 animationImage.startAnimatingGif()
-                _ = Timer.scheduledTimer(withTimeInterval: 1.8, repeats: false, block: {_ in
-                    self.stopAnimation()
-                })
             }catch{
                 print(error)
             }
@@ -147,13 +145,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if clockOutVar.showAnimation{
             do{
                 let gif = try UIImage(gifName: "Checkmark.gif")
-                animationImage.loopCount = 1
                 animationImage.isHidden = false
                 animationImage.setGifImage(gif)
+                animationImage.loopCount = 1
                 animationImage.startAnimatingGif()
-                _ = Timer.scheduledTimer(withTimeInterval: 1.8, repeats: false, block: {_ in
-                    self.stopAnimation()
-                })
             }catch{
                 print(error)
             }
