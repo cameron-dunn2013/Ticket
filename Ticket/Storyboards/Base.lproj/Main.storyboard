@@ -278,6 +278,24 @@
                                                     <constraint firstAttribute="width" constant="300" id="qD6-xW-4xp"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-xS-S6j">
+                                                <rect key="frame" x="97.5" y="292.5" width="180" height="45.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="DZg-Fw-wqh"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Clocked In">
+                                                        <attributes>
+                                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <font key="NSFont" size="36" name="BebasNeue-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="shadowOffset" width="-2" height="2"/>
+                                            </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6W-dX-7md">
                                                 <rect key="frame" x="239.5" y="300.5" width="25" height="25"/>
                                                 <constraints>
@@ -304,11 +322,13 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Xyo-1T-pgL" firstAttribute="top" secondItem="io0-TO-5ml" secondAttribute="top" constant="71" id="196-bk-05X"/>
+                                            <constraint firstItem="W3n-xS-S6j" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="46N-d8-C7K"/>
                                             <constraint firstItem="Xyo-1T-pgL" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="4zF-qc-BEa"/>
                                             <constraint firstItem="7Ss-qq-aI8" firstAttribute="leading" secondItem="io0-TO-5ml" secondAttribute="leading" id="8Uh-BH-P2z"/>
                                             <constraint firstItem="eym-4j-TmW" firstAttribute="top" secondItem="ZV2-2I-0mc" secondAttribute="bottom" constant="20" id="9Ux-i0-DpO"/>
                                             <constraint firstItem="7Ss-qq-aI8" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="E8C-Gx-mH2"/>
                                             <constraint firstItem="oOc-BY-f8S" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="IBQ-ub-McT"/>
+                                            <constraint firstItem="5yT-Kg-hRa" firstAttribute="top" secondItem="W3n-xS-S6j" secondAttribute="bottom" constant="80" id="JxT-Ba-F22"/>
                                             <constraint firstItem="x6W-dX-7md" firstAttribute="centerY" secondItem="UTq-eU-gxr" secondAttribute="centerY" id="KSG-Qt-R1o"/>
                                             <constraint firstItem="N64-Jh-k6T" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="PPU-MQ-rUe"/>
                                             <constraint firstItem="x6W-dX-7md" firstAttribute="leading" secondItem="UTq-eU-gxr" secondAttribute="trailing" constant="8" id="Q37-9S-OmC"/>
@@ -359,6 +379,7 @@
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="animationImage" destination="Xyo-1T-pgL" id="mTG-yZ-jq1"/>
+                        <outlet property="clockedLabel" destination="W3n-xS-S6j" id="XdP-fz-esh"/>
                         <outlet property="closeKeyboardButton" destination="x6W-dX-7md" id="UYs-AM-7vi"/>
                         <outlet property="lastTipAmountLabel" destination="Xf5-oQ-qdj" id="Bfe-3Q-KuH"/>
                         <outlet property="scrollViewMain" destination="io0-TO-5ml" id="0lc-iC-9bd"/>
@@ -452,7 +473,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uBc-uA-WYe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Tips" id="ioy-lS-VZT"/>
+                    <navigationItem key="navigationItem" title="Edit Tips" id="ioy-lS-VZT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GKe-Rq-k2f">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="mxw-rk-mJL" id="tzk-Dg-5G6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Re6-rY-rBY" id="WgG-0a-Dqg"/>
                     </connections>

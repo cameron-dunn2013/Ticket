@@ -11,6 +11,7 @@ import SwiftyGif
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    @IBOutlet weak var clockedLabel: UILabel!
     @IBOutlet weak var animationImage: UIImageView!
     @IBOutlet weak var tipTextField: UITextField!
     @IBOutlet weak var closeKeyboardButton: UIButton!
@@ -27,7 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         model.loadCurrentDay()
         tipTextField.delegate = self
         tipTextField.addTarget(self, action: #selector(checkForDecimals), for: .editingChanged)
-        
+        clockedLabel.alpha = 0
         
         // Do any additional setup after loading the view.
     }
@@ -48,6 +49,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        updateLabels()
         scrollViewMain.setContentOffset(CGPoint(x: 0,y: -20), animated: true)
     }
     
@@ -68,17 +70,33 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func submitTipTapped(_ sender: Any) {
-        closeKeyboardButton.isHidden = true
-        submitTipButton.isHidden = true
-        model.createTip(amount: Double(tipEntered)!, tableView: self.tableView)
-        tipTextField.text = ""
-        lastTipAmountLabel.text = "$\(tipEntered)"
-        var totalTipAmount : Double = 0.00
-        for index in model.currentDay.tips!{
-            
-            if let tip = index as? Tip {
-                totalTipAmount += tip.tipAmount
+        if model.clockedIn{
+            closeKeyboardButton.isHidden = true
+            submitTipButton.isHidden = true
+            model.createTip(amount: Double(tipEntered)!, tableView: self.tableView)
+            tipTextField.text = ""
+            lastTipAmountLabel.text = "$\(tipEntered)"
+            updateLabels()
+        }else{
+            let alert = UIAlertController(title: "Not Clocked In", message: "You are not clocked in, in order to submit a tip please clock in.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self.present(alert,animated: true)
+        }
+        
+        
+    }
+    
+    func updateLabels(){
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumFractionDigits = 2
+        if model.clockedIn{
+            if(model.currentDay.tips.count != 0){
+            lastTipAmountLabel.text = numberFormatter.string(from: NSNumber(value: model.currentDay.tips[0].tipAmount))
             }
+        }
+        var totalTipAmount : Double = 0.00
+        for index in model.currentDay.tips{
+            totalTipAmount += index.tipAmount
         }
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
@@ -88,7 +106,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let numberOfRows = model.currentDay.tips?.count else {return 0}
+        let numberOfRows = model.currentDay.tips.count
         return numberOfRows
     }
     
@@ -105,11 +123,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
         
-        if let tip = model.currentDay.tips?.object(at: indexPath.row) as? Tip {
-            let numberString = formatter.string(from: NSNumber(value: tip.tipAmount))
-            cell.amountLabel.text = "$\(numberString!)"
-            cell.dateLabel.text = tip.tipTime ?? ""
-        }
+        let tip = model.currentDay.tips[indexPath.row]
+        let numberString = formatter.string(from: NSNumber(value: tip.tipAmount))
+        cell.amountLabel.text = "$\(numberString!)"
+        cell.dateLabel.text = tip.tipTime ?? ""
+        
         
         return cell
     }
@@ -124,6 +142,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true
+        tableView.reloadData()
     }
     
     
@@ -140,8 +159,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }catch{
                 print(error)
             }
+            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+                    self.clockedLabel.text = "Clocked In!"
+                    self.clockedLabel.alpha = 1
+                })
+            }, completion: {_ in
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.clockedLabel.alpha = 0
+                })
+            })
         }else{
             present(clockInVar.controller!, animated: true)
+            
         }
     }
     
@@ -159,6 +189,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }catch{
                 print(error)
             }
+            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+                    self.clockedLabel.text = "Clocked Out!"
+                    self.clockedLabel.alpha = 1
+                })
+            }, completion: {_ in
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.clockedLabel.alpha = 0
+                })
+            })
         }else{
             present(clockOutVar.controller!, animated: true)
         }

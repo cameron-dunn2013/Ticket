@@ -16,14 +16,13 @@
 		E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */; };
 		E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */; };
 		E71704A5227F7422006E19C7 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A4227F7422006E19C7 /* Controller.swift */; };
-		E71704A7227F742D006E19C7 /* ObjectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A6227F742D006E19C7 /* ObjectsExtensions.swift */; };
 		E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A8227FA355006E19C7 /* HomeViewController.swift */; };
 		E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */; };
 		E71704B2227FE924006E19C7 /* gifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B1227FE924006E19C7 /* gifExtension.swift */; };
 		E71704B4227FE980006E19C7 /* Checkmark.gif in Resources */ = {isa = PBXBuildFile; fileRef = E71704B3227FE980006E19C7 /* Checkmark.gif */; };
 		E71704B62280220B006E19C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B52280220B006E19C7 /* ArrayExtension.swift */; };
-		E71704BA228097B4006E19C7 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E71704B8228097B3006E19C7 /* CoreDataContainer.xcdatamodeld */; };
-		E71704DE2280CA5B006E19C7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704DD2280CA5B006E19C7 /* CoreDataStack.swift */; };
+		E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3EF2283D9E000672D60 /* Objects.swift */; };
+		E7DFF3F32283F2AC00672D60 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,14 +39,13 @@
 		E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRevertViewController.swift; sourceTree = "<group>"; };
 		E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewCell.swift; sourceTree = "<group>"; };
 		E71704A4227F7422006E19C7 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
-		E71704A6227F742D006E19C7 /* ObjectsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsExtensions.swift; sourceTree = "<group>"; };
 		E71704A8227FA355006E19C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTipsTableViewCell.swift; path = "Ticket/Custom Cell/HomeTipsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		E71704B1227FE924006E19C7 /* gifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifExtension.swift; sourceTree = "<group>"; };
 		E71704B3227FE980006E19C7 /* Checkmark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Checkmark.gif; path = Assets/Checkmark.gif; sourceTree = SOURCE_ROOT; };
 		E71704B52280220B006E19C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		E71704B9228097B4006E19C7 /* Day.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Day.xcdatamodel; sourceTree = "<group>"; };
-		E71704DD2280CA5B006E19C7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E7DFF3EF2283D9E000672D60 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				E7036256227E6B7C00399C8A /* AppDelegate.swift */,
+				E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */,
 				E71704B3227FE980006E19C7 /* Checkmark.gif */,
-				E71704BB228097C0006E19C7 /* CoreData */,
+				E7DFF3F12283D9E300672D60 /* Objects */,
 				E71704AA227FA360006E19C7 /* View Controllers */,
 				E71704AB227FA37D006E19C7 /* Controller */,
 				E71704AD227FA396006E19C7 /* Custom Cell */,
@@ -159,14 +158,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E71704BB228097C0006E19C7 /* CoreData */ = {
+		E7DFF3F12283D9E300672D60 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				E71704B8228097B3006E19C7 /* CoreDataContainer.xcdatamodeld */,
-				E71704A6227F742D006E19C7 /* ObjectsExtensions.swift */,
-				E71704DD2280CA5B006E19C7 /* CoreDataStack.swift */,
+				E7DFF3EF2283D9E000672D60 /* Objects.swift */,
 			);
-			path = CoreData;
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DFF3F32283F2AC00672D60 /* BebasNeue-Regular.ttf in Resources */,
 				E7036261227E6B7D00399C8A /* LaunchScreen.storyboard in Resources */,
 				E703625E227E6B7D00399C8A /* Assets.xcassets in Resources */,
 				E71704B4227FE980006E19C7 /* Checkmark.gif in Resources */,
@@ -290,12 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E71704BA228097B4006E19C7 /* CoreDataContainer.xcdatamodeld in Sources */,
+				E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */,
 				E71704A5227F7422006E19C7 /* Controller.swift in Sources */,
 				E7036259227E6B7C00399C8A /* ViewController.swift in Sources */,
-				E71704DE2280CA5B006E19C7 /* CoreDataStack.swift in Sources */,
 				E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */,
-				E71704A7227F742D006E19C7 /* ObjectsExtensions.swift in Sources */,
 				E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */,
 				E71704B62280220B006E19C7 /* ArrayExtension.swift in Sources */,
 				E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */,
@@ -503,19 +499,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E71704B8228097B3006E19C7 /* CoreDataContainer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E71704B9228097B4006E19C7 /* Day.xcdatamodel */,
-			);
-			currentVersion = E71704B9228097B4006E19C7 /* Day.xcdatamodel */;
-			path = CoreDataContainer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E703624B227E6B7C00399C8A /* Project object */;
 }
