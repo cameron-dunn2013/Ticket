@@ -12,10 +12,10 @@ class CoreDataStack {
     private init(){}
     static let shared = CoreDataStack()
     
-    lazy var dayContainer: NSPersistentContainer = {
+    lazy var container: NSPersistentContainer = {
         
         // Give the container the name of your data model file
-        let container = NSPersistentContainer(name: "Day")
+        let container = NSPersistentContainer(name: "CoreDataContainer")
         
         // Load the persistent store
         container.loadPersistentStores { (_, error) in
@@ -28,28 +28,8 @@ class CoreDataStack {
     }()
     
     // This should help you remember that the viewContext should be used on the main thread
-    var dayMainContext: NSManagedObjectContext {
-        return dayContainer.viewContext
+    var containerMainContext: NSManagedObjectContext {
+        return container.viewContext
     }
-    
-    
-    lazy var tipContainer: NSPersistentContainer = {
-        
-        // Give the container the name of your data model file
-        let container = NSPersistentContainer(name: "Tip")
-        
-        // Load the persistent store
-        container.loadPersistentStores { (_, error) in
-            if let error = error {
-                fatalError("Failed to load persistent stores: \(error)")
-            }
-        }
-        
-        return container
-    }()
-    
-    // This should help you remember that the viewContext should be used on the main thread
-    var tipMainContext: NSManagedObjectContext {
-        return tipContainer.viewContext
-    }
+   
 }

@@ -13,7 +13,6 @@
 		E703625C227E6B7C00399C8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703625A227E6B7C00399C8A /* Main.storyboard */; };
 		E703625E227E6B7D00399C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E703625D227E6B7D00399C8A /* Assets.xcassets */; };
 		E7036261227E6B7D00399C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703625F227E6B7D00399C8A /* LaunchScreen.storyboard */; };
-		E7066DB82280D10A00D86FA5 /* Tip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7066DB62280D10A00D86FA5 /* Tip.xcdatamodeld */; };
 		E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */; };
 		E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */; };
 		E71704A5227F7422006E19C7 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A4227F7422006E19C7 /* Controller.swift */; };
@@ -23,7 +22,7 @@
 		E71704B2227FE924006E19C7 /* gifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B1227FE924006E19C7 /* gifExtension.swift */; };
 		E71704B4227FE980006E19C7 /* Checkmark.gif in Resources */ = {isa = PBXBuildFile; fileRef = E71704B3227FE980006E19C7 /* Checkmark.gif */; };
 		E71704B62280220B006E19C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B52280220B006E19C7 /* ArrayExtension.swift */; };
-		E71704BA228097B4006E19C7 /* Day.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E71704B8228097B3006E19C7 /* Day.xcdatamodeld */; };
+		E71704BA228097B4006E19C7 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E71704B8228097B3006E19C7 /* CoreDataContainer.xcdatamodeld */; };
 		E71704DE2280CA5B006E19C7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704DD2280CA5B006E19C7 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +37,6 @@
 		E703625D227E6B7D00399C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7036260227E6B7D00399C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7036262227E6B7D00399C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7066DB72280D10A00D86FA5 /* Tip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tip.xcdatamodel; sourceTree = "<group>"; };
 		E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRevertViewController.swift; sourceTree = "<group>"; };
 		E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewCell.swift; sourceTree = "<group>"; };
 		E71704A4227F7422006E19C7 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -164,8 +162,7 @@
 		E71704BB228097C0006E19C7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E7066DB62280D10A00D86FA5 /* Tip.xcdatamodeld */,
-				E71704B8228097B3006E19C7 /* Day.xcdatamodeld */,
+				E71704B8228097B3006E19C7 /* CoreDataContainer.xcdatamodeld */,
 				E71704A6227F742D006E19C7 /* ObjectsExtensions.swift */,
 				E71704DD2280CA5B006E19C7 /* CoreDataStack.swift */,
 			);
@@ -293,10 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E71704BA228097B4006E19C7 /* Day.xcdatamodeld in Sources */,
+				E71704BA228097B4006E19C7 /* CoreDataContainer.xcdatamodeld in Sources */,
 				E71704A5227F7422006E19C7 /* Controller.swift in Sources */,
 				E7036259227E6B7C00399C8A /* ViewController.swift in Sources */,
-				E7066DB82280D10A00D86FA5 /* Tip.xcdatamodeld in Sources */,
 				E71704DE2280CA5B006E19C7 /* CoreDataStack.swift in Sources */,
 				E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */,
 				E71704A7227F742D006E19C7 /* ObjectsExtensions.swift in Sources */,
@@ -509,24 +505,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E7066DB62280D10A00D86FA5 /* Tip.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E7066DB72280D10A00D86FA5 /* Tip.xcdatamodel */,
-			);
-			currentVersion = E7066DB72280D10A00D86FA5 /* Tip.xcdatamodel */;
-			name = Tip.xcdatamodeld;
-			path = ../../Tip.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		E71704B8228097B3006E19C7 /* Day.xcdatamodeld */ = {
+		E71704B8228097B3006E19C7 /* CoreDataContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				E71704B9228097B4006E19C7 /* Day.xcdatamodel */,
 			);
 			currentVersion = E71704B9228097B4006E19C7 /* Day.xcdatamodel */;
-			path = Day.xcdatamodeld;
+			path = CoreDataContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

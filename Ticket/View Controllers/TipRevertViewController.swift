@@ -29,21 +29,25 @@ class TipRevertViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "tipsCell") as! TipsTableViewCell
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
-        let numberString = formatter.string(from: NSNumber(value: model.currentDay.tips?[indexPath.row].tipAmount ?? 0.00))
-        cell.amountLabel.text = "$\(numberString!)"
-        cell.dateLabel.text = "\(model.currentDay.tips?[indexPath.row].tipTime ?? "")"
+        
+        if let tip = model.currentDay.tips?.object(at: indexPath.row) as? Tip {
+            
+            let numberString = formatter.string(from: NSNumber(value: tip.tipAmount))
+            cell.amountLabel.text = "$\(numberString!)"
+            cell.dateLabel.text = "\(tip.tipTime ?? "")"
+        }
         return cell
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

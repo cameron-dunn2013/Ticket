@@ -392,7 +392,6 @@
         <!--Edit Tips-->
         <scene sceneID="lFK-zg-JUc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mDp-Dt-u48" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="mxw-rk-mJL" customClass="TipRevertViewController" customModule="Ticket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S0t-pQ-e3g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -402,15 +401,15 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tipsCell" rowHeight="100" id="ZGc-yA-zqz" customClass="TipsTableViewCell" customModule="Ticket" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tipsCell" rowHeight="60" id="ZGc-yA-zqz" customClass="TipsTableViewCell" customModule="Ticket" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZGc-yA-zqz" id="SIJ-IQ-WCr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="HuZ-3s-h5s">
-                                                    <rect key="frame" x="35.5" y="39.5" width="304.5" height="20.5"/>
+                                                    <rect key="frame" x="35.5" y="19.5" width="304.5" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdn-Pk-U99">
                                                             <rect key="frame" x="0.0" y="0.0" width="101" height="20.5"/>
@@ -458,6 +457,7 @@
                         <outlet property="tableView" destination="Re6-rY-rBY" id="WgG-0a-Dqg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mDp-Dt-u48" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2306" y="-1770"/>
         </scene>

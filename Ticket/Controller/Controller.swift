@@ -32,8 +32,8 @@ class Controller{
         let shortenedDate = formatter.string(for: currentDate)
         formatter.dateFormat = "hh:mm a"
         let time = formatter.string(for: currentDate)
-        let tip = Tip(tipID: UUID().uuidString, tipAmount: amount, longDate: Date(), tipDate: shortenedDate!, tipTime: time!)
-        currentDay.tips?.appendAtBeginning(newItem: tip)
+        let tip = Tip(tipID: UUID().uuidString, tipAmount: amount, longDate: Date(), tipDate: shortenedDate!, tipTime: time!, day: currentDay)
+        currentDay.addToTips(tip)
         saveDay()
         tableView.reloadData()
     }
@@ -53,13 +53,13 @@ class Controller{
     }
     
     func saveDay(){
-        let context = CoreDataStack.shared.dayMainContext
-        let entity = NSEntityDescription.entity(forEntityName: "Day", in: context)
-        let newDay = NSManagedObject(entity: entity!, insertInto: context)
-        newDay.setValuesForKeys(["clockInTime": currentDay.clockInTime!,
-                                 "tips":currentDay.tips ?? [],
-                                 "totalTips":currentDay.totalTips
-            ])
+        let context = CoreDataStack.shared.containerMainContext
+//        let entity = NSEntityDescription.entity(forEntityName: "Day", in: context)
+//        let newDay = NSManagedObject(entity: entity!, insertInto: context)
+//        newDay.setValuesForKeys(["clockInTime": currentDay.clockInTime!,
+//                                 "tips":currentDay.tips ?? [],
+//                                 "totalTips":currentDay.totalTips
+//            ])
         do{
             try context.save()
             print("saved")
@@ -88,7 +88,7 @@ class Controller{
     
     func loadCurrentDay(){
         var day : Day?
-        let context = CoreDataStack.shared.dayMainContext
+        let context = CoreDataStack.shared.containerMainContext
         let request : NSFetchRequest<Day> = Day.fetchRequest()
         do{
             day = try context.fetch(request).first!

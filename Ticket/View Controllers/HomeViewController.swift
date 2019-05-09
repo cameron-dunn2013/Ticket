@@ -75,7 +75,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         lastTipAmountLabel.text = "$\(tipEntered)"
         var totalTipAmount : Double = 0.00
         for index in model.currentDay.tips!{
-            totalTipAmount += index.tipAmount
+            
+            if let tip = index as? Tip {
+                totalTipAmount += tip.tipAmount
+            }
         }
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
@@ -101,9 +104,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TipsCell") as! HomeTipsTableViewCell
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
-        let numberString = formatter.string(from: NSNumber(value: model.currentDay.tips?[indexPath.row].tipAmount ?? 0.00))
-        cell.amountLabel.text = "$\(numberString!)"
-        cell.dateLabel.text = model.currentDay.tips?[indexPath.row].tipTime ?? ""
+        
+        if let tip = model.currentDay.tips?.object(at: indexPath.row) as? Tip {
+            let numberString = formatter.string(from: NSNumber(value: tip.tipAmount))
+            cell.amountLabel.text = "$\(numberString!)"
+            cell.dateLabel.text = tip.tipTime ?? ""
+        }
+        
         return cell
     }
     

@@ -11,26 +11,22 @@ import CoreData
 
 
 extension Tip{
-    @discardableResult convenience init(tipID: String, tipAmount: Double, longDate: Date, tipDate: String, tipTime: String, context: NSManagedObjectContext = CoreDataStack.shared.tipMainContext){
+    @discardableResult convenience init(tipID: String, tipAmount: Double, longDate: Date, tipDate: String, tipTime: String, day: Day, context: NSManagedObjectContext = CoreDataStack.shared.containerMainContext){
         self.init(context: context)
         self.tipID = tipID
         self.tipAmount = tipAmount
         self.longDate = longDate
         self.tipDate = tipDate
         self.tipTime = tipTime
+        self.day = day
     }
 }
 
-//    var tipID = UUID().uuidString
-//    var tipAmount : Double = 0.00
-//    var longDate : Date = Date()
-//    var tipDate : String = ""
-//    var tipTime : String = ""
+
 
 extension Day{
-    @discardableResult convenience init(tips : [Tip], clockInTime : Date, clockOutTime : Date?, totalTips : Double?, hourly : Double?, timeWorked: String?, context: NSManagedObjectContext = CoreDataStack.shared.dayMainContext){
+    @discardableResult convenience init(tips : [Tip], clockInTime : Date, clockOutTime : Date?, totalTips : Double?, hourly : Double?, timeWorked: String?, context: NSManagedObjectContext = CoreDataStack.shared.containerMainContext){
         self.init(context: context)
-        self.tips = tips
         self.clockInTime = clockInTime
         self.clockOutTime = clockOutTime
         self.totalTips = totalTips ?? 0.00
@@ -38,11 +34,4 @@ extension Day{
         self.timeWorked = timeWorked
         
     }
-    //    var tips : [Tip] = []
-    //    var clockInTime : Date = Date()
-    //    var clockOutTime : Date?
-    //    var totalTips : Double?
-    //    var hourly : Double?
-    //    var timeWorked : String?
-
 }
