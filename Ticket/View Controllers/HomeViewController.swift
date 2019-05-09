@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lastTipAmountLabel: UILabel!
     @IBOutlet weak var totalTipAmountLabel: UILabel!
+    @IBOutlet weak var animationBackground: UIView!
     
     var tipEntered : String = ""
     
@@ -29,6 +30,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tipTextField.delegate = self
         tipTextField.addTarget(self, action: #selector(checkForDecimals), for: .editingChanged)
         clockedLabel.alpha = 0
+        animationBackground.alpha = 0
         
         // Do any additional setup after loading the view.
     }
@@ -91,8 +93,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         numberFormatter.minimumFractionDigits = 2
         if model.clockedIn{
             if(model.currentDay.tips.count != 0){
-            lastTipAmountLabel.text = numberFormatter.string(from: NSNumber(value: model.currentDay.tips[0].tipAmount))
+                let amountString = numberFormatter.string(from: NSNumber(value: model.currentDay.tips[0].tipAmount))
+                lastTipAmountLabel.text = "$\(amountString ?? "0.00")"
             }
+        }else{
+            lastTipAmountLabel.text = "$0.00"
         }
         var totalTipAmount : Double = 0.00
         for index in model.currentDay.tips{
@@ -160,13 +165,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print(error)
             }
             UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                    self.animationBackground.alpha = 1
+                })
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
                     self.clockedLabel.text = "Clocked In!"
                     self.clockedLabel.alpha = 1
                 })
             }, completion: {_ in
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 1, animations: {
                     self.clockedLabel.alpha = 0
+                    self.animationBackground.alpha = 0
                 })
             })
         }else{
@@ -186,17 +195,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 animationImage.setGifImage(gif)
                 animationImage.loopCount = 1
                 animationImage.startAnimatingGif()
+                updateLabels()
+                tableView.reloadData()
             }catch{
                 print(error)
             }
             UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                    self.animationBackground.alpha = 1
+                })
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
                     self.clockedLabel.text = "Clocked Out!"
                     self.clockedLabel.alpha = 1
                 })
             }, completion: {_ in
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 1, animations: {
                     self.clockedLabel.alpha = 0
+                    self.animationBackground.alpha = 0
                 })
             })
         }else{

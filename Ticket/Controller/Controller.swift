@@ -15,10 +15,11 @@ let model = Controller()
 
 class Controller{
     
-    let filePath = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]).appendingPathComponent("day.plist")
    
     var currentDay : Day = Day()
     var clockedIn : Bool = false
+    var days : [Day] = []
+    
     
     func encode(with aCoder: NSCoder){
         
@@ -43,6 +44,7 @@ class Controller{
         print("Clocked in")
         let day = Day()
         currentDay = day
+        currentDay.currentlyClockedIn = true
         saveCurrentDay()
         return (nil, true)
     }
@@ -57,7 +59,14 @@ class Controller{
             let currentDay1 = currentDay
             let currentDay2 = currentDay
             self.currentDay.timeWorked = formatter.string(from: currentDay1.clockInTime, to: currentDay2.clockOutTime!)
+            currentDay.currentlyClockedIn = false
             clockedIn = false
+            days.append(currentDay)
+            saveDays()
+            let newDay = Day()
+            newDay.currentlyClockedIn = false
+            currentDay = newDay
+            saveCurrentDay()
             return (nil, true)
         }else{
             let controller = UIAlertController(title: "Error", message: "You're not currently clocked in.", preferredStyle: .alert)
@@ -89,10 +98,40 @@ class Controller{
         }
         
     }
+    
+    func saveDays(){
+        guard let url = multipleDaysFileURL else {return}
+        do{
+            let data = try PropertyListEncoder().encode(days)
+            try data.write(to: url)
+        }catch{
+            print(error)
+        }
+    }
+    
+    
+    func loadSavedDays(){
+        guard let url = multipleDaysFileURL else {return}
+        do{
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            days = try decoder.decode([Day].self, from: data)
+        }catch{
+            print(error)
+        }
+    }
+    
+    
     private var dayFileURL : URL?{
         let fileManager = FileManager.default
         guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
         let finalLocation = documentsDirectory.appendingPathComponent("day.plist")
         return finalLocation
     }
+    private var multipleDaysFileURL : URL?{
+        let fileManager = FileManager.default
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
+        let finalLocation = documentsDirectory.appendingPathComponent("daysSave.plist")
+        return finalLocation
+        }
 }

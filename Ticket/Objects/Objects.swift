@@ -29,6 +29,7 @@ class Tip: Codable{
 
 
 class Day: Codable{
+    var dateSubmitted: String?
     var clockInTime : Date = Date()
     var clockOutTime : Date?
     var tips : [Tip] = []
@@ -40,3 +41,4 @@ class Day: Codable{
         currentlyClockedIn = false
     }
 }
+

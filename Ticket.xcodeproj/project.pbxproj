@@ -23,6 +23,7 @@
 		E71704B62280220B006E19C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B52280220B006E19C7 /* ArrayExtension.swift */; };
 		E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3EF2283D9E000672D60 /* Objects.swift */; };
 		E7DFF3F32283F2AC00672D60 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */; };
+		E7DFF3F52284DEEF00672D60 /* LastDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3F42284DEEF00672D60 /* LastDaysViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		E71704B52280220B006E19C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		E7DFF3EF2283D9E000672D60 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		E7DFF3F42284DEEF00672D60 /* LastDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LastDaysViewController.swift; path = "Ticket/View Controllers/LastDaysViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				E7036258227E6B7C00399C8A /* ViewController.swift */,
 				E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */,
 				E71704A8227FA355006E19C7 /* HomeViewController.swift */,
+				E7DFF3F42284DEEF00672D60 /* LastDaysViewController.swift */,
 				E71704B722802310006E19C7 /* Extensions */,
 			);
 			path = "View Controllers";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */,
+				E7DFF3F52284DEEF00672D60 /* LastDaysViewController.swift in Sources */,
 				E71704A5227F7422006E19C7 /* Controller.swift in Sources */,
 				E7036259227E6B7C00399C8A /* ViewController.swift in Sources */,
 				E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */,
@@ -451,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CameronDunn.Ticket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CameronDunn.Ticket;
 				PRODUCT_NAME = Ticket;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CameronDunn.Ticket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CameronDunn.Ticket;
 				PRODUCT_NAME = Ticket;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
