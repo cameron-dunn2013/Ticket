@@ -11,12 +11,13 @@ import UIKit
 import CoreData
 
 
-let model = Controller()
+let model = Model()
 
-class Controller{
+class Model{
     
    
     var currentDay : Day = Day()
+    var lastSevenDays : [Day] = []
     var clockedIn : Bool = false
     var days : [Day] = []
     
@@ -61,7 +62,18 @@ class Controller{
             self.currentDay.timeWorked = formatter.string(from: currentDay1.clockInTime, to: currentDay2.clockOutTime!)
             currentDay.currentlyClockedIn = false
             clockedIn = false
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            currentDay.dateSubmitted = dateFormatter.string(from: Date())
+            for index in currentDay.tips{
+                if(currentDay.totalTips == nil){
+                    currentDay.totalTips = index.tipAmount
+                }else{
+                    currentDay.totalTips! += index.tipAmount!
+                }
+            }
             days.append(currentDay)
+            addToSevenDays(day: currentDay)
             saveDays()
             let newDay = Day()
             newDay.currentlyClockedIn = false
@@ -134,4 +146,14 @@ class Controller{
         let finalLocation = documentsDirectory.appendingPathComponent("daysSave.plist")
         return finalLocation
         }
+}
+
+//Extension for LastDaysViewController.swift
+extension Model{
+    func addToSevenDays(day: Day){
+        lastSevenDays.appendAtBeginning(newItem: day)
+        if(lastSevenDays.count == 8){
+            lastSevenDays.remove(at: 7)
+        }
+    }
 }

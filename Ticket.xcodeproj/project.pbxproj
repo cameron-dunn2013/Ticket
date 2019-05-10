@@ -15,7 +15,7 @@
 		E7036261227E6B7D00399C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703625F227E6B7D00399C8A /* LaunchScreen.storyboard */; };
 		E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */; };
 		E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */; };
-		E71704A5227F7422006E19C7 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A4227F7422006E19C7 /* Controller.swift */; };
+		E71704A5227F7422006E19C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A4227F7422006E19C7 /* Model.swift */; };
 		E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A8227FA355006E19C7 /* HomeViewController.swift */; };
 		E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */; };
 		E71704B2227FE924006E19C7 /* gifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B1227FE924006E19C7 /* gifExtension.swift */; };
@@ -23,7 +23,7 @@
 		E71704B62280220B006E19C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B52280220B006E19C7 /* ArrayExtension.swift */; };
 		E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3EF2283D9E000672D60 /* Objects.swift */; };
 		E7DFF3F32283F2AC00672D60 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */; };
-		E7DFF3F52284DEEF00672D60 /* LastDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3F42284DEEF00672D60 /* LastDaysViewController.swift */; };
+		E7DFF3F52284DEEF00672D60 /* LastShiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3F42284DEEF00672D60 /* LastShiftsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		E7036262227E6B7D00399C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRevertViewController.swift; sourceTree = "<group>"; };
 		E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewCell.swift; sourceTree = "<group>"; };
-		E71704A4227F7422006E19C7 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		E71704A4227F7422006E19C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		E71704A8227FA355006E19C7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTipsTableViewCell.swift; path = "Ticket/Custom Cell/HomeTipsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		E71704B1227FE924006E19C7 /* gifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifExtension.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		E71704B52280220B006E19C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		E7DFF3EF2283D9E000672D60 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
-		E7DFF3F42284DEEF00672D60 /* LastDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LastDaysViewController.swift; path = "Ticket/View Controllers/LastDaysViewController.swift"; sourceTree = SOURCE_ROOT; };
+		E7DFF3F42284DEEF00672D60 /* LastShiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LastShiftsViewController.swift; path = "Ticket/View Controllers/LastShiftsViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 				E7036258227E6B7C00399C8A /* ViewController.swift */,
 				E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */,
 				E71704A8227FA355006E19C7 /* HomeViewController.swift */,
-				E7DFF3F42284DEEF00672D60 /* LastDaysViewController.swift */,
+				E7DFF3F42284DEEF00672D60 /* LastShiftsViewController.swift */,
 				E71704B722802310006E19C7 /* Extensions */,
 			);
 			path = "View Controllers";
@@ -129,7 +129,7 @@
 		E71704AB227FA37D006E19C7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E71704A4227F7422006E19C7 /* Controller.swift */,
+				E71704A4227F7422006E19C7 /* Model.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,12 +271,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ticket/Pods-Ticket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,8 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */,
-				E7DFF3F52284DEEF00672D60 /* LastDaysViewController.swift in Sources */,
-				E71704A5227F7422006E19C7 /* Controller.swift in Sources */,
+				E7DFF3F52284DEEF00672D60 /* LastShiftsViewController.swift in Sources */,
+				E71704A5227F7422006E19C7 /* Model.swift in Sources */,
 				E7036259227E6B7C00399C8A /* ViewController.swift in Sources */,
 				E71704B0227FA93E006E19C7 /* HomeTipsTableViewCell.swift in Sources */,
 				E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */,

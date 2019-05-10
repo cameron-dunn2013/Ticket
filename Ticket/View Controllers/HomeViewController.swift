@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateLabels(){
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumFractionDigits = 2
+        numberFormatter.minimumIntegerDigits = 1
         if model.clockedIn{
             if(model.currentDay.tips.count != 0){
                 let amountString = numberFormatter.string(from: NSNumber(value: model.currentDay.tips[0].tipAmount))
