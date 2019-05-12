@@ -26,13 +26,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.loadCurrentDay()
+        load()
         tipTextField.delegate = self
         tipTextField.addTarget(self, action: #selector(checkForDecimals), for: .editingChanged)
         clockedLabel.alpha = 0
         animationBackground.alpha = 0
         
         // Do any additional setup after loading the view.
+    }
+    
+    func load(){
+        model.loadCurrentDay()
+        model.loadSavedDays()
+        model.loadSevenShifts()
     }
     
     @objc func checkForDecimals(){

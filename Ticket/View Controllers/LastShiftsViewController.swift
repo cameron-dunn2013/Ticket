@@ -35,29 +35,29 @@ class LastShiftsViewController: UIViewController {
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.minimumIntegerDigits = 1
-        if model.lastSevenDays.count != 0{
-        day1AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[0].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count != 0{
+        day1AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[0].totalTips!)) ?? "$0.00")"
         }
-        if model.lastSevenDays.count > 1{
-        day2AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[1].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count > 1{
+        day2AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[1].totalTips!)) ?? "$0.00")"
         }
-        if model.lastSevenDays.count > 2{
-        day3AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[2].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count > 2{
+        day3AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[2].totalTips!)) ?? "$0.00")"
         }
-        if model.lastSevenDays.count > 3{
-        day4AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[3].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count > 3{
+        day4AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[3].totalTips!)) ?? "$0.00")"
         }
-        if model.lastSevenDays.count > 4{
-        day5AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[4].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count > 4{
+        day5AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[4].totalTips!)) ?? "$0.00")"
         }
-        if model.lastSevenDays.count > 5{
-        day6AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[5].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count > 5{
+        day6AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[5].totalTips!)) ?? "$0.00")"
         }
-        if model.lastSevenDays.count > 6{
-        day7AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.lastSevenDays[6].totalTips!)) ?? "$0.00")"
+        if model.sevenShifts.count > 6{
+        day7AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[6].totalTips!)) ?? "$0.00")"
         }
         var totalAmountCounter : Double = 0.00
-        for index in model.lastSevenDays{
+        for index in model.sevenShifts{
             totalAmountCounter += index.totalTips!
         }
         totalAmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalAmountCounter)) ?? "$0.00")"

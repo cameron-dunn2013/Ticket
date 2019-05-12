@@ -17,7 +17,7 @@ class Model{
     
    
     var currentDay : Day = Day()
-    var lastSevenDays : [Day] = []
+    var sevenShifts : [Day] = []
     var clockedIn : Bool = false
     var days : [Day] = []
     
@@ -73,7 +73,8 @@ class Model{
                 }
             }
             days.append(currentDay)
-            addToSevenDays(day: currentDay)
+            addToSevenShifts(day: currentDay)
+            saveSevenShifts()
             saveDays()
             let newDay = Day()
             newDay.currentlyClockedIn = false
@@ -134,6 +135,7 @@ class Model{
     }
     
     
+    
     private var dayFileURL : URL?{
         let fileManager = FileManager.default
         guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
@@ -146,14 +148,43 @@ class Model{
         let finalLocation = documentsDirectory.appendingPathComponent("daysSave.plist")
         return finalLocation
         }
+    private var sevenShiftsFileURL : URL?{
+        let fileManager = FileManager.default
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {return nil}
+        let finalLocation = documentsDirectory.appendingPathComponent("sevenShifts.plist")
+        return finalLocation
+    }
 }
 
 //Extension for LastDaysViewController.swift
 extension Model{
-    func addToSevenDays(day: Day){
-        lastSevenDays.appendAtBeginning(newItem: day)
-        if(lastSevenDays.count == 8){
-            lastSevenDays.remove(at: 7)
+    func addToSevenShifts(day: Day){
+        sevenShifts.appendAtBeginning(newItem: day)
+        if(sevenShifts.count == 8){
+            sevenShifts.remove(at: 7)
+        }
+    }
+    
+    
+    func saveSevenShifts(){
+        guard let url = sevenShiftsFileURL else {return}
+        do{
+            let data = try PropertyListEncoder().encode(sevenShifts)
+            try data.write(to: url)
+        }catch{
+            print(error)
+        }
+    }
+    
+    
+    func loadSevenShifts(){
+        guard let url = sevenShiftsFileURL else {return}
+        do{
+            let data = try Data(contentsOf: url)
+            let decoder = PropertyListDecoder()
+            sevenShifts = try decoder.decode([Day].self, from: data)
+        }catch{
+            print(error)
         }
     }
 }
