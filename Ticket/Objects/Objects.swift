@@ -36,6 +36,7 @@ class Day: Codable{
     var totalTips : Double?
     var hourly : Double?
     var timeWorked : String?
+    var hoursWorked : Double?
     var currentlyClockedIn : Bool = false
     init(){
         currentlyClockedIn = false

@@ -55,11 +55,17 @@ class Model{
     func clockOut() -> (controller: UIAlertController?, showAnimation: Bool){
         if clockedIn {
             currentDay.clockOutTime = Date()
-            let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.hour, .minute]
-            let currentDay1 = currentDay
-            let currentDay2 = currentDay
-            self.currentDay.timeWorked = formatter.string(from: currentDay1.clockInTime, to: currentDay2.clockOutTime!)
+            let interval = currentDay.clockInTime.timeIntervalSinceNow
+            let hour = interval / 3600
+            let minute = interval.truncatingRemainder(dividingBy: 3600) / 60
+            currentDay.hoursWorked = interval / 3600
+            if(hour == 0){
+                currentDay.timeWorked = "\(minute)mins"
+            }else if hour == 1{
+                currentDay.timeWorked = "\(hour)hr \(minute)mins"
+            }else{
+                currentDay.timeWorked = "\(hour)hrs \(minute)mins"
+            }
             currentDay.currentlyClockedIn = false
             clockedIn = false
             let dateFormatter = DateFormatter()
