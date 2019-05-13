@@ -23,6 +23,7 @@
 		E71704B62280220B006E19C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704B52280220B006E19C7 /* ArrayExtension.swift */; };
 		E7A33CCB228543F500833A98 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A33CCA228543F500833A98 /* DateCell.swift */; };
 		E7A33CCD2285446200833A98 /* BreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A33CCC2285446200833A98 /* BreakdownViewController.swift */; };
+		E7A33CCF2288A87A00833A98 /* BreakdownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A33CCE2288A87A00833A98 /* BreakdownTableViewCell.swift */; };
 		E7DFF3F02283D9E000672D60 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3EF2283D9E000672D60 /* Objects.swift */; };
 		E7DFF3F32283F2AC00672D60 /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */; };
 		E7DFF3F52284DEEF00672D60 /* LastShiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3F42284DEEF00672D60 /* LastShiftsViewController.swift */; };
@@ -49,6 +50,7 @@
 		E71704B52280220B006E19C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		E7A33CCA228543F500833A98 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		E7A33CCC2285446200833A98 /* BreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakdownViewController.swift; sourceTree = "<group>"; };
+		E7A33CCE2288A87A00833A98 /* BreakdownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakdownTableViewCell.swift; sourceTree = "<group>"; };
 		E7DFF3EF2283D9E000672D60 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		E7DFF3F22283F28E00672D60 /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		E7DFF3F42284DEEF00672D60 /* LastShiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LastShiftsViewController.swift; path = "Ticket/View Controllers/LastShiftsViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -142,6 +144,7 @@
 		E71704AD227FA396006E19C7 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E7A33CCE2288A87A00833A98 /* BreakdownTableViewCell.swift */,
 				E7A33CCA228543F500833A98 /* DateCell.swift */,
 				E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */,
 				E71704AF227FA93E006E19C7 /* HomeTipsTableViewCell.swift */,
@@ -310,6 +313,7 @@
 				E7A33CCB228543F500833A98 /* DateCell.swift in Sources */,
 				E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */,
 				E71704A9227FA355006E19C7 /* HomeViewController.swift in Sources */,
+				E7A33CCF2288A87A00833A98 /* BreakdownTableViewCell.swift in Sources */,
 				E71704B2227FE924006E19C7 /* gifExtension.swift in Sources */,
 				E7036257227E6B7C00399C8A /* AppDelegate.swift in Sources */,
 			);

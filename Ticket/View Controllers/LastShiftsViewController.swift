@@ -54,7 +54,7 @@ class LastShiftsViewController: UIViewController {
         day6AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[5].totalTips!)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 6{
-        day7AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[6].totalTips!)) ?? "$0.00")"
+            day7AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[6].totalTips!)) ?? "$0.00")"
         }
         var totalAmountCounter : Double = 0.00
         var totalHours : Double = 0.00
@@ -63,6 +63,10 @@ class LastShiftsViewController: UIViewController {
             totalHours += index.hoursWorked!
         }
         let averageAmount = totalAmountCounter / 7
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.minimumIntegerDigits = 1
         averageAmountLabel.text = "\(averageAmount)"
         totalAmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalAmountCounter)) ?? "$0.00")"
     }

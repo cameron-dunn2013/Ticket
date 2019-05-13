@@ -14,6 +14,10 @@ class BreakdownViewController: UIViewController {
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var hourlyLabel: UILabel!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var selectedDate : Date?
+    var selectedDay : Day?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,7 @@ class BreakdownViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         calendarView.reloadData()
+        tableView.reloadData()
     }
     
     
@@ -88,10 +93,12 @@ extension BreakdownViewController{
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        selectedDate = date
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         for index in model.days{
             if(formatter.string(from: date) == index.dateSubmitted){
+                self.selectedDay = index
                 hoursLabel.isHidden = false
                 hourlyLabel.isHidden = false
                 totalLabel.isHidden = false
@@ -101,7 +108,9 @@ extension BreakdownViewController{
                 numberFormatter.minimumFractionDigits = 2
                 let formattedNumber = numberFormatter.string(from: NSNumber(value: index.totalTips ?? 0.00))
                 totalLabel.text = "$\(formattedNumber ?? "0.00")"
-                let average = index.totalTips! / index.hoursWorked!
+                guard let totalTips = index.totalTips,
+                    let hoursWorked = index.hoursWorked else {return}
+                let average = totalTips / hoursWorked
                 hourlyLabel.text = "\(average)"
             }else{
                 hoursLabel.isHidden = true
@@ -135,4 +144,31 @@ extension BreakdownViewController{
             cell.dateLabel.textColor = UIColor.gray
         }
     }
+}
+
+extension BreakdownViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        for index in model.days{
+            guard let safeDate = selectedDate else {return 0}
+            if(index.dateSubmitted == formatter.string(from: safeDate)){
+                return index.tips.count
+            }
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BreakdownCell") as! BreakdownTableViewCell
+        let formatter = NumberFormatter()
+        formatter.minimumIntegerDigits = 1
+        formatter.minimumFractionDigits = 2
+        let formattedTips = formatter.string(from: NSNumber(value: selectedDay?.totalTips ?? 0.00))
+        cell.amountLabel.text = "\(formattedTips ?? "0.00")"
+        cell.dateLabel.text = selectedDay?.dateSubmitted
+        return cell
+    }
+    
+    
 }

@@ -397,6 +397,7 @@
                     <tabBarItem key="tabBarItem" title="Week" image="Week" id="OPN-j4-Jmi"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="averageAmountLabel" destination="Nio-UQ-liC" id="yO5-d2-TO8"/>
                         <outlet property="day1AmountLabel" destination="oVL-9c-Yi0" id="ODw-Ex-Lea"/>
                         <outlet property="day2AmountLabel" destination="b3b-JU-DTz" id="EWJ-jj-ObX"/>
                         <outlet property="day3AmountLabel" destination="1Fh-Ca-DLO" id="zcO-3x-Kh1"/>
@@ -631,13 +632,37 @@
                                                     <constraint firstAttribute="height" constant="200" id="uZM-eV-aKX"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2lb-fG-C8q">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BreakdownCell" id="2lb-fG-C8q" customClass="BreakdownTableViewCell" customModule="Ticket" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2lb-fG-C8q" id="WKS-E5-Spa">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc0-Qb-Mdi">
+                                                                    <rect key="frame" x="40" y="11.5" width="106" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.077282055799999999" green="0.64862090380000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-2i-4Aq">
+                                                                    <rect key="frame" x="292" y="11.5" width="82" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="JXI-2i-4Aq" firstAttribute="centerY" secondItem="WKS-E5-Spa" secondAttribute="centerY" id="49y-fA-tTG"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="JXI-2i-4Aq" secondAttribute="trailing" constant="20" id="O7b-Hm-xLZ"/>
+                                                                <constraint firstItem="Qc0-Qb-Mdi" firstAttribute="centerY" secondItem="WKS-E5-Spa" secondAttribute="centerY" id="hA3-hd-MbQ"/>
+                                                                <constraint firstItem="Qc0-Qb-Mdi" firstAttribute="leading" secondItem="WKS-E5-Spa" secondAttribute="leadingMargin" constant="20" id="rie-Qp-Ycf"/>
+                                                            </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="amountLabel" destination="Qc0-Qb-Mdi" id="Js6-6Z-oCt"/>
+                                                            <outlet property="dateLabel" destination="JXI-2i-4Aq" id="c8p-tL-omN"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>
@@ -761,6 +786,7 @@
                         <outlet property="hourlyLabel" destination="OvM-JB-qNR" id="ESb-vx-UyS"/>
                         <outlet property="hoursLabel" destination="Dek-JV-bRq" id="pjU-ag-Gd6"/>
                         <outlet property="monthLabel" destination="4CI-XV-Ghz" id="gN7-Rq-vYK"/>
+                        <outlet property="tableView" destination="rk7-rH-KwY" id="jZ7-2g-J1N"/>
                         <outlet property="totalLabel" destination="coh-7n-9eq" id="M9q-UC-aKR"/>
                     </connections>
                 </viewController>

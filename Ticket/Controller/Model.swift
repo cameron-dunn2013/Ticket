@@ -20,6 +20,8 @@ class Model{
     var sevenShifts : [Day] = []
     var clockedIn : Bool = false
     var days : [Day] = []
+    var addedDay = false
+    var duplicateDay = false
     
     
     func encode(with aCoder: NSCoder){
@@ -54,6 +56,16 @@ class Model{
     
     func clockOut() -> (controller: UIAlertController?, showAnimation: Bool){
         if clockedIn {
+            if(addedDay == false){
+                for index in days{
+                    if(index.dateSubmitted == currentDay.dateSubmitted){
+                        let alert = UIAlertController(title: "Duplicate day", message: "You have already clocked out once today. Would you like to add this shift to the current day?", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                        duplicateDay = true
+                        return (alert, false)
+                    }
+                }
+            }
             currentDay.clockOutTime = Date()
             let interval = currentDay.clockInTime.timeIntervalSinceNow
             let hour = interval / 3600
@@ -91,6 +103,16 @@ class Model{
             let controller = UIAlertController(title: "Error", message: "You're not currently clocked in.", preferredStyle: .alert)
             controller.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             return (controller, false)
+        }
+    }
+    
+    func addToCurrentDay(){
+        for index in days{
+            if(index.dateSubmitted == currentDay.dateSubmitted){
+                currentDay.totalTips! += index.totalTips!
+                currentDay.hoursWorked! += index.hoursWorked!
+                addedDay = true
+            }
         }
     }
     

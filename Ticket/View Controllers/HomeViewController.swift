@@ -162,29 +162,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func clockInButton(_ sender: Any) {
         let clockInVar = model.clockIn()
         if clockInVar.animation{
-            do{
-                let gif = try UIImage(gifName: "Checkmark.gif")
-                animationImage.isHidden = false
-                animationImage.setGifImage(gif)
-                animationImage.loopCount = 1
-                animationImage.startAnimatingGif()
-            }catch{
-                print(error)
-            }
-            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-                    self.animationBackground.alpha = 1
-                })
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
-                    self.clockedLabel.text = "Clocked In!"
-                    self.clockedLabel.alpha = 1
-                })
-            }, completion: {_ in
-                UIView.animate(withDuration: 1, animations: {
-                    self.clockedLabel.alpha = 0
-                    self.animationBackground.alpha = 0
-                })
-            })
+            showAnimation(clockedLabelText: "Clocked In!")
         }else{
             present(clockInVar.controller!, animated: true)
             
@@ -196,35 +174,49 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func clockOutButton(_ sender: Any) {
         let clockOutVar = model.clockOut()
         if clockOutVar.showAnimation{
-            do{
-                let gif = try UIImage(gifName: "Checkmark.gif")
-                animationImage.isHidden = false
-                animationImage.setGifImage(gif)
-                animationImage.loopCount = 1
-                animationImage.startAnimatingGif()
-                updateLabels()
-                tableView.reloadData()
-            }catch{
-                print(error)
-            }
-            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-                    self.animationBackground.alpha = 1
-                })
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
-                    self.clockedLabel.text = "Clocked Out!"
-                    self.clockedLabel.alpha = 1
-                })
-            }, completion: {_ in
-                UIView.animate(withDuration: 1, animations: {
-                    self.clockedLabel.alpha = 0
-                    self.animationBackground.alpha = 0
-                })
-            })
+            showAnimation(clockedLabelText: "Clocked Out!")
         }else{
-            present(clockOutVar.controller!, animated: true)
+            if model.duplicateDay{
+                clockOutVar.controller?.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+                    model.addToCurrentDay()
+                    model.duplicateDay = false
+                    model.addedDay = false
+                    self.showAnimation(clockedLabelText: "Clocked Out!")
+                }))
+                self.present(clockOutVar.controller!, animated: true)
+            }else{
+                self.present(clockOutVar.controller!, animated: true)
+            }
         }
-
+        
+    }
+    
+    func showAnimation(clockedLabelText: String){
+        do{
+            let gif = try UIImage(gifName: "Checkmark.gif")
+            animationImage.isHidden = false
+            animationImage.setGifImage(gif)
+            animationImage.loopCount = 1
+            animationImage.startAnimatingGif()
+            updateLabels()
+            tableView.reloadData()
+        }catch{
+            print(error)
+        }
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                self.animationBackground.alpha = 1
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+                self.clockedLabel.text = clockedLabelText
+                self.clockedLabel.alpha = 1
+            })
+        }, completion: {_ in
+            UIView.animate(withDuration: 1, animations: {
+                self.clockedLabel.alpha = 0
+                self.animationBackground.alpha = 0
+            })
+        })
     }
     
     
