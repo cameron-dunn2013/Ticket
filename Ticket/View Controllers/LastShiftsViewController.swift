@@ -36,39 +36,60 @@ class LastShiftsViewController: UIViewController {
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.minimumIntegerDigits = 1
         if model.sevenShifts.count != 0{
-        day1AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[0].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[0].totalTips else {return}
+        day1AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 1{
-        day2AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[1].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[1].totalTips else {return}
+        day2AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 2{
-        day3AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[2].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[2].totalTips else {return}
+        day3AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 3{
-        day4AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[3].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[3].totalTips else {return}
+        day4AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 4{
-        day5AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[4].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[4].totalTips else {return}
+        day5AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 5{
-        day6AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[5].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[5].totalTips else {return}
+        day6AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         if model.sevenShifts.count > 6{
-            day7AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: model.sevenShifts[6].totalTips!)) ?? "$0.00")"
+            guard let totalTips = model.sevenShifts[6].totalTips else {return}
+            day7AmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalTips)) ?? "$0.00")"
         }
         var totalAmountCounter : Double = 0.00
-        var totalHours : Double = 0.00
+        var hours = 0
+        var minutes = 0
         for index in model.sevenShifts{
             totalAmountCounter += index.totalTips!
-            totalHours += index.hoursWorked!
+            guard let hourInt = index.hourInt, let minuteInt = index.minuteInt else {return}
+            hours += hourInt
+            minutes += minuteInt
         }
-        let averageAmount = totalAmountCounter / 7
+        if(minutes > 60){
+            hours += Int(minutes / 60)
+            minutes = Int(Double().truncatingRemainder(dividingBy: 60))
+        }
+        hoursLabel.text = "\(hours)hrs \(minutes)mins"
+        var averageAmount : Float = 0.00
+        if(hours == 0){
+            averageAmount = Float(totalAmountCounter) / Float(Float(minutes) * 0.016)
+        }else{
+            averageAmount = Float(totalAmountCounter) / Float(hours)
+        }
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         formatter.minimumIntegerDigits = 1
-        averageAmountLabel.text = "\(averageAmount)"
+        averageAmountLabel.text = "\(formatter.string(from: NSNumber(value: averageAmount)) ?? "0.00")"
         totalAmountLabel.text = "$\(numberFormatter.string(from: NSNumber(value: totalAmountCounter)) ?? "$0.00")"
     }
+    
 
 }

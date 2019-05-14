@@ -37,6 +37,8 @@ class Day: Codable{
     var hourly : Double?
     var timeWorked : String?
     var hoursWorked : Double?
+    var hourInt : Int?
+    var minuteInt: Int?
     var currentlyClockedIn : Bool = false
     init(){
         currentlyClockedIn = false

@@ -16,7 +16,6 @@ class BreakdownViewController: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedDate : Date?
     var selectedDay : Day?
     
     override func viewDidLoad() {
@@ -31,7 +30,7 @@ class BreakdownViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         calendarView.reloadData()
-        tableView.reloadData()
+        updateLabels()
     }
     
     
@@ -89,16 +88,28 @@ extension BreakdownViewController{
     func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM"
-        monthLabel.text = formatter.string(from: visibleDates.indates[0].date)
+        monthLabel.text = formatter.string(from: visibleDates.monthDates[0].date)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        selectedDate = date
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         for index in model.days{
             if(formatter.string(from: date) == index.dateSubmitted){
                 self.selectedDay = index
+            }else{
+                self.selectedDay = nil
+            }
+        }
+        updateLabels()
+        configureCell(view: cell, cellState: cellState)
+    }
+    
+    func updateLabels(){
+        for index in model.days{
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/yyyy"
+            if(selectedDay?.dateSubmitted == index.dateSubmitted){
                 hoursLabel.isHidden = false
                 hourlyLabel.isHidden = false
                 totalLabel.isHidden = false
@@ -111,19 +122,20 @@ extension BreakdownViewController{
                 guard let totalTips = index.totalTips,
                     let hoursWorked = index.hoursWorked else {return}
                 let average = totalTips / hoursWorked
-                hourlyLabel.text = "\(average)"
+                hourlyLabel.text = "\(numberFormatter.string(from: NSNumber(value: average)) ?? "0.00")"
+                tableView.reloadData()
             }else{
                 hoursLabel.isHidden = true
                 hourlyLabel.isHidden = true
                 totalLabel.isHidden = true
+                tableView.reloadData()
             }
         }
-        configureCell(view: cell, cellState: cellState)
     }
-    
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         configureCell(view: cell, cellState: cellState)
+        updateLabels()
     }
     
     
@@ -146,14 +158,16 @@ extension BreakdownViewController{
     }
 }
 
+
+//extension for TableView
 extension BreakdownViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
+        guard let safeDate = selectedDay else {return 0}
         for index in model.days{
-            guard let safeDate = selectedDate else {return 0}
-            if(index.dateSubmitted == formatter.string(from: safeDate)){
-                return index.tips.count
+            if(index.dateSubmitted == safeDate.dateSubmitted){
+                return safeDate.tips.count
             }
         }
         return 0
@@ -164,9 +178,9 @@ extension BreakdownViewController : UITableViewDelegate, UITableViewDataSource{
         let formatter = NumberFormatter()
         formatter.minimumIntegerDigits = 1
         formatter.minimumFractionDigits = 2
-        let formattedTips = formatter.string(from: NSNumber(value: selectedDay?.totalTips ?? 0.00))
-        cell.amountLabel.text = "\(formattedTips ?? "0.00")"
-        cell.dateLabel.text = selectedDay?.dateSubmitted
+        let formattedTips = formatter.string(from: NSNumber(value: (selectedDay?.tips[indexPath.row].tipAmount) ?? 0.00))
+        cell.amountLabel.text = "$\(formattedTips ?? "0.00")"
+        cell.dateLabel.text = selectedDay?.tips[indexPath.row].tipTime
         return cell
     }
     

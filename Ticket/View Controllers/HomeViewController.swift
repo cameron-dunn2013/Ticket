@@ -35,6 +35,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+    @objc func reloadTable(){
+        tableView.reloadData()
+    }
+    
     func load(){
         model.loadCurrentDay()
         model.loadSavedDays()
@@ -51,6 +55,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     tipTextField.resignFirstResponder()
                 }
             }
+        }
+        if((tipTextField.text?.contains(".."))!){
+            tipTextField.text = String((tipTextField.text?.dropLast())!)
         }
     }
     
@@ -112,6 +119,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 2
+        formatter.minimumIntegerDigits = 1
         let numberString = formatter.string(from: NSNumber(value: totalTipAmount))
         totalTipAmountLabel.text = "$\(numberString!)"
     }
@@ -175,17 +183,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let clockOutVar = model.clockOut()
         if clockOutVar.showAnimation{
             showAnimation(clockedLabelText: "Clocked Out!")
+            return
         }else{
-            if model.duplicateDay{
-                clockOutVar.controller?.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+            if clockOutVar.dayExists{
+                let alert = UIAlertController(title: "Duplicate day", message: "You have already clocked out once today. Would you like to add this shift to the current day?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "Override (delete old shift)", style: .destructive, handler: { (_) in
+                    model.overridePreviousShift()
+                    self.tableView.reloadData()
+                    self.updateLabels()
+                    self.showAnimation(clockedLabelText: "Clocked Out!")
+                    return
+                }))
+                alert.addAction(UIAlertAction(title: "Yes (Merge shifts)", style: .default, handler: { _ in
                     model.addToCurrentDay()
-                    model.duplicateDay = false
-                    model.addedDay = false
+                    model.handledDuplicate = true
+                    _ = model.clockOut()
+                    self.tableView.reloadData()
+                    self.updateLabels()
                     self.showAnimation(clockedLabelText: "Clocked Out!")
                 }))
-                self.present(clockOutVar.controller!, animated: true)
+                
+                    self.present(alert, animated: true)
             }else{
-                self.present(clockOutVar.controller!, animated: true)
+                let alert = UIAlertController(title: "Error", message: "You're not currently clocked in.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
         }
         
