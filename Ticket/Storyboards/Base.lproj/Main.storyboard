@@ -889,6 +889,20 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3q-ae-b1D">
+                                                <rect key="frame" x="99" y="300.5" width="25" height="25"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="E7I-N1-Kpy"/>
+                                                    <constraint firstAttribute="width" constant="25" id="p1c-zj-wvP"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <real key="value" value="12.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter tip..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTq-eU-gxr">
                                                 <rect key="frame" x="144" y="298" width="87.5" height="30"/>
                                                 <nil key="textColor"/>
@@ -1071,6 +1085,7 @@
                                             <constraint firstItem="5yT-Kg-hRa" firstAttribute="top" secondItem="W3n-xS-S6j" secondAttribute="bottom" constant="80" id="JxT-Ba-F22"/>
                                             <constraint firstItem="x6W-dX-7md" firstAttribute="centerY" secondItem="UTq-eU-gxr" secondAttribute="centerY" id="KSG-Qt-R1o"/>
                                             <constraint firstItem="N64-Jh-k6T" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="PPU-MQ-rUe"/>
+                                            <constraint firstItem="e3q-ae-b1D" firstAttribute="centerY" secondItem="UTq-eU-gxr" secondAttribute="centerY" id="Pgi-jh-KDe"/>
                                             <constraint firstItem="x6W-dX-7md" firstAttribute="leading" secondItem="UTq-eU-gxr" secondAttribute="trailing" constant="8" id="Q37-9S-OmC"/>
                                             <constraint firstAttribute="trailing" secondItem="eym-4j-TmW" secondAttribute="trailing" constant="14" id="QC2-94-q8B"/>
                                             <constraint firstAttribute="bottom" secondItem="7Ss-qq-aI8" secondAttribute="bottom" constant="24" id="ZRY-rv-Clg"/>
@@ -1087,6 +1102,7 @@
                                             <constraint firstItem="eym-4j-TmW" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerXWithinMargins" id="oiV-zT-Y8R"/>
                                             <constraint firstItem="UTq-eU-gxr" firstAttribute="top" secondItem="eym-4j-TmW" secondAttribute="bottom" constant="20" id="ol0-DE-Zoz"/>
                                             <constraint firstItem="7Ss-qq-aI8" firstAttribute="top" secondItem="oOc-BY-f8S" secondAttribute="bottom" constant="8" id="pF6-Ea-9kt"/>
+                                            <constraint firstItem="UTq-eU-gxr" firstAttribute="leading" secondItem="e3q-ae-b1D" secondAttribute="trailing" constant="20" id="pTO-j9-0SL"/>
                                             <constraint firstItem="UTq-eU-gxr" firstAttribute="centerX" secondItem="io0-TO-5ml" secondAttribute="centerX" id="tcF-VJ-jFN"/>
                                             <constraint firstItem="eym-4j-TmW" firstAttribute="leading" secondItem="io0-TO-5ml" secondAttribute="leading" constant="14" id="zmO-Y2-NQT"/>
                                         </constraints>
@@ -1125,6 +1141,7 @@
                         <outlet property="closeKeyboardButton" destination="x6W-dX-7md" id="UYs-AM-7vi"/>
                         <outlet property="lastTipAmountLabel" destination="Xf5-oQ-qdj" id="Bfe-3Q-KuH"/>
                         <outlet property="scrollViewMain" destination="io0-TO-5ml" id="0lc-iC-9bd"/>
+                        <outlet property="statusView" destination="e3q-ae-b1D" id="ddJ-ps-qbX"/>
                         <outlet property="submitTipButton" destination="bv3-iz-Eq3" id="pDM-4o-tT1"/>
                         <outlet property="tableView" destination="7Ss-qq-aI8" id="4gC-bh-LiB"/>
                         <outlet property="tipTextField" destination="UTq-eU-gxr" id="gzc-1K-pbQ"/>

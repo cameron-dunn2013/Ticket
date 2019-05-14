@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var lastTipAmountLabel: UILabel!
     @IBOutlet weak var totalTipAmountLabel: UILabel!
     @IBOutlet weak var animationBackground: UIView!
+    @IBOutlet weak var statusView: UIView!
     
     var tipEntered : String = ""
     
@@ -31,10 +32,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tipTextField.addTarget(self, action: #selector(checkForDecimals), for: .editingChanged)
         clockedLabel.alpha = 0
         animationBackground.alpha = 0
+        updateStatusView()
         
         // Do any additional setup after loading the view.
     }
-    
+    func updateStatusView(){
+        if(model.clockedIn == true){
+            statusView.backgroundColor = UIColor.green
+        }else{
+            statusView.backgroundColor = UIColor.red
+        }
+    }
     @objc func reloadTable(){
         tableView.reloadData()
     }
@@ -171,6 +179,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let clockInVar = model.clockIn()
         if clockInVar.animation{
             showAnimation(clockedLabelText: "Clocked In!")
+            updateStatusView()
         }else{
             present(clockInVar.controller!, animated: true)
             
@@ -193,6 +202,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.tableView.reloadData()
                     self.updateLabels()
                     self.showAnimation(clockedLabelText: "Clocked Out!")
+                    self.updateStatusView()
                     return
                 }))
                 alert.addAction(UIAlertAction(title: "Yes (Merge shifts)", style: .default, handler: { _ in
@@ -202,6 +212,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.tableView.reloadData()
                     self.updateLabels()
                     self.showAnimation(clockedLabelText: "Clocked Out!")
+                    self.updateStatusView()
                 }))
                 
                     self.present(alert, animated: true)
