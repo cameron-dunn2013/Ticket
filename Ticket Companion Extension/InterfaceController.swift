@@ -94,19 +94,26 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
                     dollarsInt = 100
                 }
             }
-            dollarsButton.setTitle(formatter.string(from: NSNumber(value: dollarsInt)) ?? "0")
+            dollarsButton.setTitle(formatter.string(from: NSNumber(value: Double(Int(dollarsInt)))) ?? "0")
         }
         
     }
     @IBAction func sendTip() {
-        let tip = Tip(tipAmount: (dollarsInt + centsInt), longDate: Date())
-        session.sendMessage(["Tip": tip], replyHandler: nil) { (error) in
+        let tip = Tip(tipAmount: (Double(Int(dollarsInt)) + centsInt), longDate: Date())
+        var data = ""
+        do{
+            let jsonEncoder = JSONEncoder()
+            data = try jsonEncoder.encode(tip).base64EncodedString()
+        }catch{
             print(error)
-            self.dollarsInt = 0.00
-            self.centsInt = 0.00
-            self.dollarsButton.setTitle("0")
-            self.centsButton.setTitle(".00")
         }
+        session.sendMessage(["Tip": data], replyHandler: nil) { (error) in
+            print(error)
+        }
+        self.dollarsInt = 0.00
+        self.centsInt = 0.00
+        self.dollarsButton.setTitle("0")
+        self.centsButton.setTitle(".00")
         
     }
     override func didDeactivate() {

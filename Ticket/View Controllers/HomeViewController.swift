@@ -26,6 +26,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var banner: GADBannerView!
     
+    var session: WCSession!
+    
     var interstitial : GADInterstitial!
     
     var tipEntered : String = ""
@@ -44,6 +46,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let request = GADRequest()
         interstitial.load(request)
         interstitial.delegate = self
+        session = WCSession.default
+        session.delegate = self
+        session.activate()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -318,5 +324,39 @@ extension HomeViewController : GADInterstitialDelegate{
 
 //Extension for WatchKit
 extension HomeViewController : WCSessionDelegate{
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("Session active for watch")
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        let tipJSON = message["Tip"] as! String
+        print("received message")
+        if(model.clockedIn){
+            var newTip : Tip?
+            do{
+                let decoder = JSONDecoder()
+                guard let data = Data(base64Encoded: tipJSON) else {return}
+                newTip = try decoder.decode(Tip.self, from: data)
+            }catch{
+                print(error)
+            }
+            guard let safeTip = newTip else {return}
+            model.currentDay.tips.appendAtBeginning(newItem: safeTip)
+            model.saveCurrentDay()
+            self.tableView.reloadData()
+            self.updateLabels()
+        }else{
+            let alert = UIAlertController(title: "Not clocked in", message: "You weren't clocked in and attempted to add tips from your watch. Please clock in to have the tips added, otherwise they will be disposed.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
     
 }
