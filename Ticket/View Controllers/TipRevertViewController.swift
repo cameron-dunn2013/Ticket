@@ -28,6 +28,8 @@ class TipRevertViewController: UIViewController, UITableViewDelegate, UITableVie
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    
     @IBAction func editButtonTapped(_ sender: Any) {
         tableView.setEditing(true, animated: true)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(stopEditingTable(_:)))

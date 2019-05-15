@@ -13,6 +13,15 @@
 		E703625C227E6B7C00399C8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703625A227E6B7C00399C8A /* Main.storyboard */; };
 		E703625E227E6B7D00399C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E703625D227E6B7D00399C8A /* Assets.xcassets */; };
 		E7036261227E6B7D00399C8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E703625F227E6B7D00399C8A /* LaunchScreen.storyboard */; };
+		E716E13B228BCF790001FE8A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E716E139228BCF790001FE8A /* Interface.storyboard */; };
+		E716E13D228BCF7B0001FE8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E716E13C228BCF7B0001FE8A /* Assets.xcassets */; };
+		E716E144228BCF7B0001FE8A /* Ticket Companion Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E716E143228BCF7B0001FE8A /* Ticket Companion Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E716E149228BCF7B0001FE8A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716E148228BCF7B0001FE8A /* InterfaceController.swift */; };
+		E716E14B228BCF7B0001FE8A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716E14A228BCF7B0001FE8A /* ExtensionDelegate.swift */; };
+		E716E14D228BCF7B0001FE8A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716E14C228BCF7B0001FE8A /* NotificationController.swift */; };
+		E716E14F228BCF7C0001FE8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E716E14E228BCF7C0001FE8A /* Assets.xcassets */; };
+		E716E154228BCF7C0001FE8A /* Ticket Companion.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E716E137228BCF790001FE8A /* Ticket Companion.app */; };
+		E716E15F228BE8650001FE8A /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716E15D228BE8620001FE8A /* Tip.swift */; };
 		E71704A1227F6F21006E19C7 /* TipRevertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */; };
 		E71704A3227F72C6006E19C7 /* TipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */; };
 		E71704A5227F7422006E19C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71704A4227F7422006E19C7 /* Model.swift */; };
@@ -29,6 +38,48 @@
 		E7DFF3F52284DEEF00672D60 /* LastShiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFF3F42284DEEF00672D60 /* LastShiftsViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E716E145228BCF7B0001FE8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E703624B227E6B7C00399C8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E716E142228BCF7B0001FE8A;
+			remoteInfo = "Ticket Companion Extension";
+		};
+		E716E152228BCF7C0001FE8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E703624B227E6B7C00399C8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E716E136228BCF790001FE8A;
+			remoteInfo = "Ticket Companion";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E716E15A228BCF7C0001FE8A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E716E144228BCF7B0001FE8A /* Ticket Companion Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E716E15C228BCF7C0001FE8A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E716E154228BCF7C0001FE8A /* Ticket Companion.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		681B8AC9100BF640DE76A9BC /* Pods_Ticket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ticket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B659AB8824EA5CA28D9E1BAC /* Pods-Ticket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ticket.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ticket/Pods-Ticket.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +91,18 @@
 		E703625D227E6B7D00399C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7036260227E6B7D00399C8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7036262227E6B7D00399C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E716E137228BCF790001FE8A /* Ticket Companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ticket Companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E716E13A228BCF790001FE8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E716E13C228BCF7B0001FE8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E716E13E228BCF7B0001FE8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E716E143228BCF7B0001FE8A /* Ticket Companion Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ticket Companion Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E716E148228BCF7B0001FE8A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E716E14A228BCF7B0001FE8A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E716E14C228BCF7B0001FE8A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		E716E14E228BCF7C0001FE8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E716E150228BCF7C0001FE8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E716E151228BCF7C0001FE8A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E716E15D228BE8620001FE8A /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		E71704A0227F6F21006E19C7 /* TipRevertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipRevertViewController.swift; sourceTree = "<group>"; };
 		E71704A2227F72C6006E19C7 /* TipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewCell.swift; sourceTree = "<group>"; };
 		E71704A4227F7422006E19C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -62,6 +125,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B99E5584EA69D891309D2FB /* Pods_Ticket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E716E140228BCF7B0001FE8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E716E163228BEA020001FE8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				E7036255227E6B7C00399C8A /* Ticket */,
+				E716E138228BCF790001FE8A /* Ticket Companion */,
+				E716E147228BCF7B0001FE8A /* Ticket Companion Extension */,
 				E7036254227E6B7C00399C8A /* Products */,
 				1447D694E7F21ECF8C5209A6 /* Pods */,
 				1E6B28273B7111A50F77B191 /* Frameworks */,
@@ -99,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				E7036253227E6B7C00399C8A /* Ticket.app */,
+				E716E137228BCF790001FE8A /* Ticket Companion.app */,
+				E716E143228BCF7B0001FE8A /* Ticket Companion Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +199,30 @@
 				E7036262227E6B7D00399C8A /* Info.plist */,
 			);
 			path = Ticket;
+			sourceTree = "<group>";
+		};
+		E716E138228BCF790001FE8A /* Ticket Companion */ = {
+			isa = PBXGroup;
+			children = (
+				E716E139228BCF790001FE8A /* Interface.storyboard */,
+				E716E13C228BCF7B0001FE8A /* Assets.xcassets */,
+				E716E13E228BCF7B0001FE8A /* Info.plist */,
+			);
+			path = "Ticket Companion";
+			sourceTree = "<group>";
+		};
+		E716E147228BCF7B0001FE8A /* Ticket Companion Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E716E15D228BE8620001FE8A /* Tip.swift */,
+				E716E148228BCF7B0001FE8A /* InterfaceController.swift */,
+				E716E14A228BCF7B0001FE8A /* ExtensionDelegate.swift */,
+				E716E14C228BCF7B0001FE8A /* NotificationController.swift */,
+				E716E14E228BCF7C0001FE8A /* Assets.xcassets */,
+				E716E150228BCF7C0001FE8A /* Info.plist */,
+				E716E151228BCF7C0001FE8A /* PushNotificationPayload.apns */,
+			);
+			path = "Ticket Companion Extension";
 			sourceTree = "<group>";
 		};
 		E71704AA227FA360006E19C7 /* View Controllers */ = {
@@ -190,15 +295,52 @@
 				E7036250227E6B7C00399C8A /* Frameworks */,
 				E7036251227E6B7C00399C8A /* Resources */,
 				EAC84D0E1B2B6C428E17D32A /* [CP] Embed Pods Frameworks */,
+				E716E15C228BCF7C0001FE8A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E716E153228BCF7C0001FE8A /* PBXTargetDependency */,
 			);
 			name = Ticket;
 			productName = TicketV2;
 			productReference = E7036253227E6B7C00399C8A /* Ticket.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E716E136228BCF790001FE8A /* Ticket Companion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E716E15B228BCF7C0001FE8A /* Build configuration list for PBXNativeTarget "Ticket Companion" */;
+			buildPhases = (
+				E716E135228BCF790001FE8A /* Resources */,
+				E716E15A228BCF7C0001FE8A /* Embed App Extensions */,
+				E716E163228BEA020001FE8A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E716E146228BCF7B0001FE8A /* PBXTargetDependency */,
+			);
+			name = "Ticket Companion";
+			productName = "Ticket Companion";
+			productReference = E716E137228BCF790001FE8A /* Ticket Companion.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E716E142228BCF7B0001FE8A /* Ticket Companion Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E716E159228BCF7C0001FE8A /* Build configuration list for PBXNativeTarget "Ticket Companion Extension" */;
+			buildPhases = (
+				E716E13F228BCF7B0001FE8A /* Sources */,
+				E716E140228BCF7B0001FE8A /* Frameworks */,
+				E716E141228BCF7B0001FE8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ticket Companion Extension";
+			productName = "Ticket Companion Extension";
+			productReference = E716E143228BCF7B0001FE8A /* Ticket Companion Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -211,6 +353,12 @@
 				ORGANIZATIONNAME = "Cameron Dunn";
 				TargetAttributes = {
 					E7036252227E6B7C00399C8A = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					E716E136228BCF790001FE8A = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					E716E142228BCF7B0001FE8A = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
@@ -229,6 +377,8 @@
 			projectRoot = "";
 			targets = (
 				E7036252227E6B7C00399C8A /* Ticket */,
+				E716E136228BCF790001FE8A /* Ticket Companion */,
+				E716E142228BCF7B0001FE8A /* Ticket Companion Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -243,6 +393,23 @@
 				E703625E227E6B7D00399C8A /* Assets.xcassets in Resources */,
 				E71704B4227FE980006E19C7 /* Checkmark.gif in Resources */,
 				E703625C227E6B7C00399C8A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E716E135228BCF790001FE8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E716E13D228BCF7B0001FE8A /* Assets.xcassets in Resources */,
+				E716E13B228BCF790001FE8A /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E716E141228BCF7B0001FE8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E716E14F228BCF7C0001FE8A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,15 +447,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ticket/Pods-Ticket-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -319,7 +490,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E716E13F228BCF7B0001FE8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E716E14D228BCF7B0001FE8A /* NotificationController.swift in Sources */,
+				E716E15F228BE8650001FE8A /* Tip.swift in Sources */,
+				E716E14B228BCF7B0001FE8A /* ExtensionDelegate.swift in Sources */,
+				E716E149228BCF7B0001FE8A /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E716E146228BCF7B0001FE8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E716E142228BCF7B0001FE8A /* Ticket Companion Extension */;
+			targetProxy = E716E145228BCF7B0001FE8A /* PBXContainerItemProxy */;
+		};
+		E716E153228BCF7C0001FE8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E716E136228BCF790001FE8A /* Ticket Companion */;
+			targetProxy = E716E152228BCF7C0001FE8A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E703625A227E6B7C00399C8A /* Main.storyboard */ = {
@@ -336,6 +531,14 @@
 				E7036260227E6B7D00399C8A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E716E139228BCF790001FE8A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E716E13A228BCF790001FE8A /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -495,6 +698,96 @@
 			};
 			name = Release;
 		};
+		E716E155228BCF7C0001FE8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TZ89Q545VW;
+				IBSC_MODULE = Ticket_Companion_Extension;
+				INFOPLIST_FILE = "Ticket Companion/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CameronDunn.Ticket.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		E716E156228BCF7C0001FE8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TZ89Q545VW;
+				IBSC_MODULE = Ticket_Companion_Extension;
+				INFOPLIST_FILE = "Ticket Companion/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CameronDunn.Ticket.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		E716E157228BCF7C0001FE8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TZ89Q545VW;
+				INFOPLIST_FILE = "Ticket Companion Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CameronDunn.Ticket.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		E716E158228BCF7C0001FE8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TZ89Q545VW;
+				INFOPLIST_FILE = "Ticket Companion Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CameronDunn.Ticket.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +805,24 @@
 			buildConfigurations = (
 				E7036266227E6B7D00399C8A /* Debug */,
 				E7036267227E6B7D00399C8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E716E159228BCF7C0001FE8A /* Build configuration list for PBXNativeTarget "Ticket Companion Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E716E157228BCF7C0001FE8A /* Debug */,
+				E716E158228BCF7C0001FE8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E716E15B228BCF7C0001FE8A /* Build configuration list for PBXNativeTarget "Ticket Companion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E716E155228BCF7C0001FE8A /* Debug */,
+				E716E156228BCF7C0001FE8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

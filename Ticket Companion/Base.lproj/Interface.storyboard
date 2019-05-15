@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch44" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ticket_Companion" customModuleProvider="target">
+                    <items>
+                        <group width="136" height="90" alignment="center" contentMode="scaleAspectFit" id="ubp-ys-fy6">
+                            <items>
+                                <label height="70" alignment="left" text="$" id="J7d-eb-tHW"/>
+                                <button width="56" height="88" alignment="left" title="0" id="Pbj-U5-yth">
+                                    <connections>
+                                        <action selector="dollarsButtonTapped" destination="AgC-eL-Hgc" id="CD8-wB-D4E"/>
+                                    </connections>
+                                </button>
+                                <button width="53" height="89" alignment="left" title=".00" id="jBs-Vh-Dq2">
+                                    <connections>
+                                        <action selector="centsButtonTapped" destination="AgC-eL-Hgc" id="FSs-oO-L1o"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="bHT-b9-T0e"/>
+                        <button width="1" alignment="left" title="Add To Tips" id="Kkc-Uk-E3S">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="sendTip" destination="AgC-eL-Hgc" id="J5x-al-KKf"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="centsButton" destination="jBs-Vh-Dq2" id="MZP-jD-Dcw"/>
+                        <outlet property="dollarsButton" destination="Pbj-U5-yth" id="gDi-KA-DWy"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="219.52173913043478" y="367.32142857142856"/>
+        </scene>
+    </scenes>
+</document>

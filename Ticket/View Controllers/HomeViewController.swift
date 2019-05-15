@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyGif
+import GoogleMobileAds
+import WatchConnectivity
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -22,6 +24,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var totalTipAmountLabel: UILabel!
     @IBOutlet weak var animationBackground: UIView!
     @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var banner: GADBannerView!
+    
+    var interstitial : GADInterstitial!
     
     var tipEntered : String = ""
     
@@ -33,9 +38,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         clockedLabel.alpha = 0
         animationBackground.alpha = 0
         updateStatusView()
+        banner.adUnitID = "ca-app-pub-6327624401500144/6058901651"
+        banner.rootViewController = self
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6327624401500144/5037310009")
+        let request = GADRequest()
+        interstitial.load(request)
+        interstitial.delegate = self
         
         // Do any additional setup after loading the view.
     }
+    
     func updateStatusView(){
         if(model.clockedIn == true){
             statusView.backgroundColor = UIColor.green
@@ -74,6 +86,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(true)
         updateLabels()
         scrollViewMain.setContentOffset(CGPoint(x: 0,y: -20), animated: true)
+        banner.load(GADRequest())
     }
     
     
@@ -191,7 +204,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func clockOutButton(_ sender: Any) {
         let clockOutVar = model.clockOut()
         if clockOutVar.showAnimation{
+            updateStatusView()
             showAnimation(clockedLabelText: "Clocked Out!")
+            if(self.interstitial.isReady){
+                self.interstitial.present(fromRootViewController: self)
+            }else{
+                print("Ad wasn't ready")
+            }
             return
         }else{
             if clockOutVar.dayExists{
@@ -201,8 +220,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     model.overridePreviousShift()
                     self.tableView.reloadData()
                     self.updateLabels()
-                    self.showAnimation(clockedLabelText: "Clocked Out!")
                     self.updateStatusView()
+                    if(self.interstitial.isReady){
+                        self.interstitial.present(fromRootViewController: self)
+                    }else{
+                        print("Ad wasn't ready")
+                    }
                     return
                 }))
                 alert.addAction(UIAlertAction(title: "Yes (Merge shifts)", style: .default, handler: { _ in
@@ -211,8 +234,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     _ = model.clockOut()
                     self.tableView.reloadData()
                     self.updateLabels()
-                    self.showAnimation(clockedLabelText: "Clocked Out!")
                     self.updateStatusView()
+                    if(self.interstitial.isReady){
+                        self.interstitial.present(fromRootViewController: self)
+                    }else{
+                        print("Ad wasn't ready")
+                    }
                 }))
                 
                     self.present(alert, animated: true)
@@ -224,6 +251,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
+    
     
     func showAnimation(clockedLabelText: String){
         do{
@@ -276,4 +304,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+}
+
+//Extension for Interstitial ad
+extension HomeViewController : GADInterstitialDelegate{
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        self.showAnimation(clockedLabelText: "Clocked Out!")
+        
+        interstitial.load(GADRequest())
+    }
+}
+
+
+//Extension for WatchKit
+extension HomeViewController : WCSessionDelegate{
+    
 }
