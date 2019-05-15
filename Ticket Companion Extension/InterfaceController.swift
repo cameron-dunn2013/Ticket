@@ -67,9 +67,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, WKCrownDele
                 formatter.minimumFractionDigits = 2
                 formatter.maximumIntegerDigits = 0
                 if(rotationalDelta >= 0){
-                    centsInt += 0.005
+                    centsInt += 0.002
                 }else{
-                    centsInt -= 0.005
+                    centsInt -= 0.002
                 }
                 if(centsInt < 0){
                     centsInt = 0.00

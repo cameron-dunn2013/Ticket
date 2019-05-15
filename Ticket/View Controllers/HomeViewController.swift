@@ -199,9 +199,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if clockInVar.animation{
             showAnimation(clockedLabelText: "Clocked In!")
             updateStatusView()
+            updateLabels()
         }else{
             present(clockInVar.controller!, animated: true)
-            
         }
     }
     
@@ -356,6 +356,16 @@ extension HomeViewController : WCSessionDelegate{
             let alert = UIAlertController(title: "Not clocked in", message: "You weren't clocked in and attempted to add tips from your watch. Please clock in to have the tips added, otherwise they will be disposed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true)
+            var newTip : Tip?
+            do{
+                let decoder = JSONDecoder()
+                guard let data = Data(base64Encoded: tipJSON) else {return}
+                newTip = try decoder.decode(Tip.self, from: data)
+            }catch{
+                print(error)
+            }
+            guard let safeTip = newTip else {return}
+            model.clockedOutTips.appendAtBeginning(newItem: safeTip)
         }
     }
     

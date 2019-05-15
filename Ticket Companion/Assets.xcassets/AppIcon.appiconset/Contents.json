@@ -1,8 +1,63 @@
 {
   "images" : [
     {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "icon_20@2x.jpeg",
+      "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "icon_20@3x.jpeg",
+      "scale" : "3x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "WatchIcon_companionSettings_29@2x.jpg",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "WatchIcon_companionSettings_29@3x.jpg",
+      "scale" : "3x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "WatchIcon_homeScreen_40@2x.jpg",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "icon_40@3x.jpeg",
+      "scale" : "3x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "icon_60@2x.jpeg",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "icon_60@3x.jpeg",
+      "scale" : "3x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "icon_1024.jpeg",
+      "scale" : "1x"
+    },
+    {
       "size" : "24x24",
       "idiom" : "watch",
+      "filename" : "WatchIcon_notificationCenter_38mm@2x.jpg",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "38mm"
@@ -10,6 +65,7 @@
     {
       "size" : "27.5x27.5",
       "idiom" : "watch",
+      "filename" : "WatchIcon_notificationCenter_42mm@2x.jpg",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "42mm"
@@ -17,18 +73,21 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "WatchIcon_companionSettings_29@2x-1.jpg",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "WatchIcon_companionSettings_29@3x-1.jpg",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
+      "filename" : "WatchIcon_homeScreen_40@2x-1.jpg",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -36,6 +95,7 @@
     {
       "size" : "44x44",
       "idiom" : "watch",
+      "filename" : "WatchIcon_longLook_42mm@2x.jpg",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "40mm"
@@ -43,6 +103,7 @@
     {
       "size" : "50x50",
       "idiom" : "watch",
+      "filename" : "icon_50@2x.jpeg",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "44mm"
@@ -50,6 +111,7 @@
     {
       "size" : "86x86",
       "idiom" : "watch",
+      "filename" : "WatchIcon_shortLook_38mm@2x.jpg",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "38mm"
@@ -57,6 +119,7 @@
     {
       "size" : "98x98",
       "idiom" : "watch",
+      "filename" : "WatchIcon_shortLook_42mm@2x.jpg",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"
@@ -64,13 +127,15 @@
     {
       "size" : "108x108",
       "idiom" : "watch",
+      "filename" : "216.jpg",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "44mm"
     },
     {
-      "idiom" : "watch-marketing",
       "size" : "1024x1024",
+      "idiom" : "watch-marketing",
+      "filename" : "icon_1024-1.jpeg",
       "scale" : "1x"
     }
   ],

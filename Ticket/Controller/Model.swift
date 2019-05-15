@@ -16,6 +16,7 @@ let homeVC = HomeViewController()
 
 class Model{
     
+    var clockedOutTips: [Tip] = []
     var currentDay : Day = Day()
     var sevenShifts : [Day] = []
     var clockedIn : Bool = false
@@ -47,6 +48,10 @@ class Model{
         let day = Day()
         currentDay = day
         currentDay.currentlyClockedIn = true
+        if(clockedOutTips.count > 0){
+            currentDay.tips.append(contentsOf: clockedOutTips)
+            clockedOutTips.removeAll()
+        }
         saveCurrentDay()
         return (nil, true)
     }
